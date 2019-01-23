@@ -3,10 +3,10 @@
   <!-- NOTE: various comments and unused configuration possibilities have been purged
      from this file.  Please refer to http://wiki.apache.org/solr/SolrConfigXml,
      as well as the default solrconfig file included with Solr -->
-
+  
   <abortOnConfigurationError>${solr.abortOnConfigurationError:true}</abortOnConfigurationError>
-
-  <luceneMatchVersion>6.1.0</luceneMatchVersion>
+  
+  <luceneMatchVersion>LUCENE_40</luceneMatchVersion>
 
   <directoryFactory name="DirectoryFactory" class="${solr.directoryFactory:solr.StandardDirectoryFactory}"/>
 
@@ -17,9 +17,9 @@
   </updateHandler>
 
   <!-- solr lib dirs -->
-  <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lib" />
-  <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lucene-libs" />
-
+  <lib dir="../lib/contrib/analysis-extras/lib" />
+  <lib dir="../lib/contrib/analysis-extras/lucene-libs" />
+  
   <dataDir>${solr.data.dir:}</dataDir>
 
   <requestHandler name="search" class="solr.SearchHandler" default="true">
@@ -30,53 +30,70 @@
        <str name="defType">edismax</str>
        <str name="echoParams">explicit</str>
        <str name="q.alt">*:*</str>
-       <str name="mm">2&lt;-1 5&lt;-2 6&lt;90%</str>
+       <str name="mm">1&lt;-1 5&lt;-2 6&lt;90%</str>
+       <str name="df">all_text_timv</str>
        <int name="qs">1</int>
        <int name="ps">2</int>
        <float name="tie">0.01</float>
        <!-- this qf and pf are used by default, if not otherwise specified by
             client. The default blacklight_config will use these for the
-            "keywords" search. See the author_qf/author_pf, title_qf, etc
+            "keywords" search. See the author_qf/author_pf, title_qf, etc 
             below, which the default blacklight_config will specify for
             those searches. You may also be interested in:
             http://wiki.apache.org/solr/LocalParams
        -->
         <str name="qf">
           id
-          full_title_tsim
-          short_title_tsim
-          alternative_title_tsim
-          active_fedora_model_ssi
-          title_tsim
-          author_tsimesim
-          subject_tsim
+          title_tesim
+          author_tesim
+          subject_tesim
+          description_tesim
+          reference_no_search
+          reference_no_ssi
           all_text_timv
         </str>
         <str name="pf">
-          all_text_timv^10
+          description_tesim^10
+          reference_no_search
+          reference_no_ssi
+          all_text_timv
         </str>
 
        <str name="author_qf">
-          author_tsim
+          author_tesim
        </str>
        <str name="author_pf">
+          author_tesim
        </str>
        <str name="title_qf">
-          title_tsim
-          full_title_tsim
-          short_title_tsim
-          alternative_title_tsim
+          title_tesim
+          full_title_tesim
+          short_title_tesim
+          alternative_title_tesim
        </str>
        <str name="title_pf">
+          title_tesim
+          full_title_tesim
+          short_title_tesim
+          alternative_title_tesim
        </str>
        <str name="subject_qf">
-          subject_tsim
+          subject_tesim
        </str>
        <str name="subject_pf">
+          subject_tesim
        </str>
+       <str name="reference_no_qf">
+          reference_no_search^100
+          reference_no_ssi
+       </str>
+      <str name="reference_no_pf">
+          reference_no_search^1000
+          reference_no_ssi
+      </str>
 
        <str name="fl">
-         *,
+         *, 
          score
        </str>
 
@@ -84,8 +101,10 @@
        <str name="facet.mincount">1</str>
        <str name="facet.limit">10</str>
        <str name="facet.field">active_fedora_model_ssi</str>
-       <str name="facet.field">subject_ssim</str>
-
+       <str name="facet.field">subject_tesim</str>
+       <str name="facet.field">repository_ssi</str>
+       <str name="facet.field">author_ssim</str>
+       <str name="facet.field">language_ssim</str>
        <str name="spellcheck">true</str>
        <str name="spellcheck.dictionary">default</str>
        <str name="spellcheck.onlyMorePopular">true</str>
@@ -121,15 +140,14 @@
       </str>
     </lst>
   </requestHandler>
-
+  
   <requestHandler name="standard" class="solr.SearchHandler">
      <lst name="defaults">
        <str name="echoParams">explicit</str>
        <str name="defType">lucene</str>
      </lst>
   </requestHandler>
-  
-  <!-- JA added -->
+
   <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
   <requestHandler name="document" class="solr.SearchHandler" >
     <lst name="defaults">
@@ -152,55 +170,30 @@
       <str name="spellcheckIndexDir">./spell</str>
       <str name="buildOnOptimize">true</str>
     </lst>
-    <lst name="spellchecker">
-      <str name="name">author</str>
-      <str name="field">author_spell</str>
-      <str name="spellcheckIndexDir">./spell_author</str>
-      <str name="accuracy">0.7</str>
-      <str name="buildOnOptimize">true</str>
-    </lst>
-    <lst name="spellchecker">
-      <str name="name">subject</str>
-      <str name="field">subject_spell</str>
-      <str name="spellcheckIndexDir">./spell_subject</str>
-      <str name="accuracy">0.7</str>
-      <str name="buildOnOptimize">true</str>
-    </lst>
-    <lst name="spellchecker">
-      <str name="name">title</str>
-      <str name="field">title_spell</str>
-      <str name="spellcheckIndexDir">./spell_title</str>
-      <str name="accuracy">0.7</str>
-      <str name="buildOnOptimize">true</str>
-    </lst>
   </searchComponent>
-
-  <searchComponent name="suggest" class="solr.SuggestComponent">
-    <lst name="suggester">
-      <str name="name">mySuggester</str>
-      <str name="lookupImpl">FuzzyLookupFactory</str>
-      <str name="suggestAnalyzerFieldType">textSuggest</str>
-      <str name="buildOnCommit">true</str>
-      <str name="field">suggest</str>
-    </lst>
-  </searchComponent>
-
-  <requestHandler name="/suggest" class="solr.SearchHandler" startup="lazy">
-    <lst name="defaults">
-      <str name="suggest">true</str>
-      <str name="suggest.count">5</str>
-      <str name="suggest.dictionary">mySuggester</str>
-    </lst>
-    <arr name="components">
-      <str>suggest</str>
-    </arr>
-  </requestHandler>
-
-  <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" />
-
+  
+  <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" /> 
+  
   <requestDispatcher handleSelect="true" >
     <requestParsers enableRemoteStreaming="true" multipartUploadLimitInKB="2048" />
   </requestDispatcher>
-
+  
   <requestHandler name="/analysis/field" startup="lazy" class="solr.FieldAnalysisRequestHandler" />
+  <requestHandler name="/update" class="solr.UpdateRequestHandler"  />
+  <requestHandler name="/admin/" class="org.apache.solr.handler.admin.AdminHandlers" />
+  
+  <requestHandler name="/admin/ping" class="solr.PingRequestHandler">
+    <lst name="invariants">
+      <str name="q">solrpingquery</str>
+    </lst>
+    <lst name="defaults">
+      <str name="echoParams">all</str>
+    </lst>
+  </requestHandler>
+  
+  <!-- config for the admin interface --> 
+  <admin>
+    <defaultQuery>search</defaultQuery>
+  </admin>
+  
 </config>

@@ -26,7 +26,10 @@ module HullHistoryCentreHelper
   end
 
   def isbn(document)
-    isbn = document.get("isbn_ssm", sep: nil) 
+    puts '-'*30
+    puts document
+    puts document['isbn_ssm']
+    isbn = document['isbn_ssm'] #document.get("isbn_ssm", sep: nil) 
     isbn = isbn.nil? ? nil : isbn.first
   end
 
