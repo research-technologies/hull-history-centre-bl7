@@ -1,0 +1,137 @@
+/* flash message */
+
+.flash-message-container, .validation-summary-errors {
+  padding: 1.5em 2em 1.5em 1.5em;
+  margin: 0em;
+  background: $alert-color;
+  color: set-overlay-text-color($alert-color);
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
+  border: 0;
+  border-radius: 0;
+  h3 {
+   color: set-overlay-text-color($alert-color);
+   margin-top: 0;
+  }
+  p { font-size: 0.96em; }
+  button.close{
+    right: 0;
+    color: set-overlay-text-color($alert-color);
+    opacity: 1;
+  }
+}
+
+.flash-message-container.alert-info, .validation-summary-errors.alert-info {
+	background: $info-color;
+	@include message-borders($info-color);
+	color: set-overlay-text-color($info-color);
+}
+ 
+.flash-message-container.alert-error, .validation-summary-errors.alert-error {
+	background: $error-color;
+	color: set-overlay-text-color($error-color);
+	@include message-borders($error-color);
+	-moz-transition-property: all;
+	-webkit-transition-property: all;
+	-o-transition-property: all;
+	transition-property: all;
+	-moz-transition-duration: 0.2s;
+	-webkit-transition-duration: 0.2s;
+	-o-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+}
+
+.flash-message-container.alert-primary, .validation-summary-errors.alert-primary {
+	background: $primary-color;
+	@include message-borders($primary-color);
+	color: set-overlay-text-color($primary-color);
+}
+
+.flash-message-container.alert-success, .validation-summary-errors.alert-success {
+	background: $success-color;
+	@include message-borders($success-color);
+	color: set-overlay-text-color($success-color);
+}
+
+.flash-message-container.alert-notice, .validation-summary-errors.alert-notice {
+	background: $notice-color;
+	@include message-borders($notice-color);
+	color: set-overlay-text-color($notice-color);
+}
+
+.flash-message-container.alert-info, .validation-summary-errors.alert-info {
+	background: $info-color;
+	@include message-borders($info-color);
+	color: set-overlay-text-color($info-color);
+}
+
+.flash-message-container.alert-warning, .validation-summary-errors.alert-warning {
+	background: $warning-color;
+	@include message-borders($warning-color);
+	color: set-overlay-text-color($warning-color);
+}
+
+.flash-message-container.alert-danger, .validation-summary-errors.alert-danger {
+	background: $danger-color;
+	font-weight: 800;
+	@include message-borders($danger-color);
+	color: set-overlay-text-color($danger-color);
+}
+
+.flash-message-container.alert-error, .validation-summary-errors.alert-error {
+	background: $error-color;
+	@include message-borders($error-color);
+	color: set-overlay-text-color($error-color);
+}
+
+/* alerts */
+.alert-primary { background: $primary-color; color: set-overlay-text-color($primary-color); }
+/*.alert-alt { background: $alt-color; color: set-overlay-text-color($alt-color); }*/
+.alert-error { background: $error-color; color: set-overlay-text-color($error-color); }
+.alert-danger { background: $danger-color; color: set-overlay-text-color($danger-color); }
+.alert-info { background: $info-color; color: set-overlay-text-color($info-color); }
+.alert-notice { background: $notice-color; color: set-overlay-text-color($notice-color); }
+.alert-success, .label-success { background: $success-color; color: set-overlay-text-color($success-color); }
+.alert-warning { background: $warning-color; color: set-overlay-text-color($warning-color); }
+
+/* NEW */
+
+/* inline control help */
+/*.popover {
+	-webkit-border-radius: $cornercontrol;
+	-moz-border-radius: $cornercontrol;
+	border-radius: $cornercontrol;
+}
+*/
+/* validation */
+
+.field-validation-error {
+	background: $error-color;
+	color: set-overlay-text-color($error-color);
+	text-shadow: 0px 1px 0px darken($error-color, 20%);
+	padding: 0.25em 1em;
+	-moz-transition-property: all;
+    -webkit-transition-property: all;
+    -o-transition-property: all;
+    transition-property: all;
+    -moz-transition-duration: 0.2s;
+    -webkit-transition-duration: 0.2s;
+    -o-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+//-webkit-transition: opacity 1s ease-out;
+//-moz-transition: opacity 1s ease-in;
+}
+
+.input-validation-error {
+	color: $error-color !important;
+    border: 1px solid $error-color !important;
+}
+
+.input-validation-error:focus {
+	border: 1px solid $error-color !important;
+	box-shadow: 0 1px 1px rgba($error-color, 0.075) inset, 0 0 8px rgba($error-color, 0.6) !important;
+	transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s !important;
+}
+
+/* modal */
+
+/*.modal { border-radius: $cornercontrol; }*/

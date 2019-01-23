@@ -1,0 +1,137 @@
+.tile {
+	padding: ($grid-gutter-width / 2) $grid-gutter-width $grid-gutter-width $grid-gutter-width;	
+	min-height: 300px;
+}
+
+@media (max-width: 480px) { 
+  .tile { padding: $grid-gutter-width; }
+}
+
+.tile-container { padding: ($tile-padding / 2) $tile-padding; }
+.tile-inner-container { padding: ($tile-padding / 2) $tile-padding; margin-bottom: $tile-padding; min-height: $tile-inner-min-height; }
+/* mobile footer adjustment */
+@media (max-width: 320px) { 
+  .tile-container { padding: 0; }
+}
+
+.masthead {
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	background: transparent;
+	color: #fff;
+	h1 {
+		text-shadow: 0 0 15px rgba(#000,0.57);
+		margin-bottom: 22px;
+	}
+	.tile-navigation-container > a {
+		color: #fff;
+	}
+	p { font-size: 20px; }
+	a { 
+		/*color: #fff; 
+		text-decoration: none; 
+		border-bottom: 0; 
+		transition: all 0.15s ease 0s; 
+		&:hover { color: #d3d3d3; }*/ 	
+	}
+	.btn {
+		padding: 10px 30px;/*
+		background-color: #fff;
+		color: #333;
+		font-size: 23px;
+		transition: all 0.15s ease 0s;*/
+
+		/*&:hover { color: #222; background-color:  #d3d3d3;  }*/
+
+		/*text-transform: uppercase;*/
+		border-radius: 0;
+		/*border: #fff 2px solid;*/
+		margin: 1.5em 0 0;
+	}
+		
+}
+
+.tile-white { 
+	background: #fff;
+	/* todo: calcluate underlying font darkness based on background color */
+	color: #333;
+	h2 { color: #333; }
+	h3 { color: #666; }
+}
+
+.tile-light-gray { 
+	background: #f7f7f7; 
+	color: #000;
+	h2 { color: #111; }
+	h3 { color: #333; }
+}
+
+.tile-dark-gray { 
+	background: #999; 
+	color: #fff;
+	h2 { color: #111; }
+	h3 { color: #333; }
+}
+
+/* used for surrounding inner-tiles not for holding textual content */
+.tile-primary-color {
+	background: $primary-color;
+	color: #fff;
+}
+
+.tile-button-container {   
+    padding: $grid-gutter-width;
+}
+
+.tile-navigation-container {
+    bottom: 0;
+    left: 48%;
+    padding: $grid-gutter-width 0;
+    position: absolute;
+}
+
+/* move to navigation partial */
+.next-tile-link {
+	font-size: 3em;
+}
+
+/* move out to partial */
+
+.para-bg {
+  background: url('../images/hydra-hero-banner.jpg') center center;
+/*  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;*/
+  -moz-background-size: 125%;
+  -webkit-background-size: 125%;
+  -o-background-size: 125%;
+  background-size: 125%;
+  position: fixed;
+  width: 100%;
+  height: 725px; /*same height as jumbotron */
+  top:-40px;
+  left:0;
+  z-index: -1;
+}
+
+.bg {
+   background: url('../images/hydra-hero-banner.jpg') center center;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+/*  position: relative;
+  width: 100%;
+  height: 913px;
+  top:0;
+  left:0;
+  z-index: -1;*/
+}
+
+
+
+
+
+

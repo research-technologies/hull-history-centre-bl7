@@ -1,0 +1,197 @@
+/* navbar-fixed-top is in use:*/
+/*body { padding-top: $navbar-height + $subnavbar-height; }*/
+
+/*.brand-logo { 
+	margin: (
+				(($navbar-height - $brand-logo-height) / 2) 
+				($grid-gutter-width / 2)
+			);
+	
+}*/
+/*
+#brand-logo-icon { 
+  display: block;
+  text-indent: -9999px;
+  height: $navbar-height;
+  min-width: $brand-logo-min-width; 
+  background: url($brand-logo-image);
+  background-size: cover;
+  margin: 30px;
+}*/
+
+/* navbar-fixed-top is in use:*/
+/*body { padding-top: $navbar-height + $subnavbar-height; }*/
+
+#main-container {
+    min-height: $main-container-height;
+}
+
+#document { margin-bottom: 50px; }
+#sidebar { padding: 0;}
+#assets legend {
+  h3 { margin: 0; }
+  border: none;
+}
+
+.news-article {
+  margin: .5rem 0 3.5rem 0;
+  .bar-time {
+    display: block;
+    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    color: $neutral-color;
+    margin: 0 0 0.2rem 0;
+  } 
+  > h3 { margin: 0.2rem 0 0.5rem;}
+  .read-artlec { margin: 0 0 0.2rem 0; }
+}
+
+.hr-alt { 
+  background-image: linear-gradient(to right, #fff, $neutral-color-light 35%, $neutral-color-light 65%, #fff);
+
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 40% 1px;
+/*    margin-top: 10px;
+    padding-bottom: 14px;*/
+    padding-top: 20px;
+    text-align: center;
+    color: transparent;
+
+  margin: ($grid-gutter-width * 1.8) 0 $grid-gutter-width 0;
+}
+
+.tile-bottom {
+  margin-bottom: $grid-gutter-width;
+}
+
+.doc {
+    margin: 20px 0;
+}
+
+.side-panel-container { 
+  margin: 15px 0; 
+  margin-top: 68px;
+  margin-bottom: 30px;
+  position: fixed;
+  padding: 0;
+  @media (max-width: 480px), (max-width: 768px) { 
+    margin-top: 0px;  position: relative;
+  }
+}
+
+.top-panel-heading { 
+  > h4 { 
+    margin-top: 7px;
+    margin-bottom: 8px;
+  } 
+}
+
+.embed-container { 
+  margin: 40px 0;
+  .embedded-label { text-align: center; margin: 15px;}
+}
+
+.cover-art { margin-bottom: $grid-gutter-width / 2; }
+
+.dl-vertical > span > dd, .dl-vertical > dd { margin-bottom: 1rem; }
+.dl-vertical > h4 > dd, .dl-vertical > dd { margin-bottom: 1rem; }
+.dl-vertical  > h4:first-child { margin-top: 0; }
+
+.documentHeader > h4 { margin-top: 0; }
+.document-metadata {
+  > dt { width: 120px; text-align: left; }
+  > dd { margin-left: 120px; }
+}
+
+/* tab content */
+#tab-content > h3 { margin-top: 0; }
+
+/* navbar */
+.brand-logo { 
+    margin: (
+                (($navbar-height - $brand-logo-height) / 2) 
+                ($grid-gutter-width / 2)
+/*              (($navbar-height - $brand-logo-height) / 2)
+                ($grid-gutter-width / 2)*/
+            );
+    /*background: url($brand-logo-image) no-repeat top left;
+    background-size: cover;*/
+    height: 56px;
+    margin: 11px 15px;
+    /*width: 41px;*/
+            }l
+
+.brand-title { 
+    margin: ( 
+                (($navbar-height - $brand-title-size) / 3) 
+                ($grid-gutter-width) 
+                0 
+                ($grid-gutter-width / 2) 
+            );
+}
+
+.university-logo {
+    margin-top: (($navbar-height - $univesity-logo-height) / 2); 
+    margin-right: ($grid-gutter-width / 2) !important;
+}
+
+.navbar-alt { background: $navbar-alt; }
+
+section#content {
+    background: transparent;  /*$body-bg;*/
+    margin: 0 0 $footer-height;
+    /*padding: 0 0 $footer-height;*/
+    z-index: 1045;
+}
+
+.full-width { width: 100%; margin: 0 !important; }
+
+.row-spacer {
+    margin-top: 50px;
+}
+
+/* sort and per page */
+#sortAndPerPage {
+    margin: 12px 0;
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+#previousNextDocument {
+  margin: 12px; 
+  border-bottom: 0 none; 
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+/* page */
+.page-footer {
+  margin: 50px 0 25px;
+  .bar-time {
+    display: block;
+    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    color: $neutral-color;
+    margin: 0 0 0.2rem 0;
+  } 
+  p { color: $neutral-color; }
+}
+
+/* advanced search */
+.panel.panel-default.well {
+  > h3 { margin-top: 0; }
+  ul { 
+    margin: 0;
+    padding: 0;
+    list-style-type: circle;
+    list-style-position: outside;
+    list-style-image: none;
+    li { margin-bottom: 0.5em; }
+  }
+}
+.sort-submit-buttons {
+  margin: 2em 0;
+}

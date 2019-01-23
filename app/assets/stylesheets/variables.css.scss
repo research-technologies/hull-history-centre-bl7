@@ -1,0 +1,118 @@
+/* == bootstrap =========================================================== */
+
+/* colors */
+$body-bg: #fff;
+
+/*typeography*/
+$font-family-base: 'open_sansregular';
+$font-size-base: 14px;
+$line-height-base: 1.428571429;
+$line-height-computed: floor(($font-size-base * $line-height-base));
+
+
+/* components */
+$grid-gutter-width: 30px;
+$border-radius-base: 0;
+
+/* navbar */
+$navbar-height: 80px;
+$navbar-margin-bottom: 0;
+$brand-logo-height: 35px;
+$navbar-default-bg: #fff;
+$navbar-default-border: darken($navbar-default-bg, 4.5%);
+$navbar-inverse-link-color: #c1c1c1;
+$navbar-default-brand-color: #333;
+$navbar-inverse-brand-color: #fff;
+$navbar-inverse-bg: #1f1f1f;
+$navbar-inverse-border: transparent;
+$navbar-padding-horizontal: 30px;
+$navbar-padding-vertical: (($navbar-height - $line-height-computed) / 2);
+
+
+/* subnavbar - set to 0 if no subnavbar used*/
+$subnavbar-height: 0px;
+
+/* jumbotron */
+$jumbotron-padding: 60px;
+
+/* forms */
+$input-group-addon-bg: #dfdfdf;
+$input-group-addon-border-color: transparent;
+$input-border-radius: 0;
+
+/* wells */
+$well-border: 0;
+
+/* panels */
+$panel-bg: #f5f5f5;
+$panel-body-padding: 10px 15px;
+$panel-default-border: transparent;
+
+/* highlighters */
+$selected-text-color: #f67872;
+$alert-color: #4E9799;
+$error-color: #C04940;
+$danger-color: #9d261d;
+$success-color: #3E803F;
+$notice-color: #3d7a7a;
+$info-color: #E1E16C;
+$warning-color: #BE5A13;
+
+/* == site theme =========================================================== */
+
+/* navbar */
+$brand-logo-image: asset-path('hhc-logo-nt.svg');
+$brand-logo-min-width: 145px;
+$univesity-logo-height: 27px;
+$sub-navbar-height: 50px;
+$navbar-alt: #f5f5f5;
+
+$header-max-height: 350px;
+
+/* footer */
+$footer-text-color: #c1c1c1;
+$footer-color: #1F1F1F;
+$footer-height: 205px;
+
+$brand-title-size: 20px;
+$brand-title-color: #fff;
+
+$primary-color: #005269;
+$primary-color-2: #988861;
+$primary-color-3: #422f30;
+$primary-color-4: #00b9bb;
+$secondary-color: #ba4310;
+$secondary-color-2: #c59500;
+$secondary-color-3:#89ada4;
+$secondary-color-4: #686f93;
+
+$primary-dark: #005875;
+$blue: #0026d5;
+$green: #00dc4a;
+$orange: #ff8300;
+$neutral-color: #999;
+$neutral-color-light: #efefef;
+
+$primary-link-color: #006495;
+$primary-link-hover-color: #888;
+
+/* buttons */
+$btn-base-color: #efefef;
+$btn-primary-bg: $secondary-color-3;
+
+/* applied filter */
+$applied-filter-color: $secondary-color-4; 
+
+/* sort and per page */
+$sort-and-per-page-color: $secondary-color-3;
+
+/* pagination */
+$pagination-active-bg: $secondary-color-4;
+$pagination-active-border: darken($secondary-color-4, 5%);
+$pagination-color: $secondary-color-4;
+$pagination-hover-color: darken($secondary-color-4, 10%);
+
+/* site extras - embed here once tile partial has been imported into uoh-base */
+$tile-padding: 20px;
+$tile-inner-min-height: 175px;
+$main-container-height: 676px;

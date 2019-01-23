@@ -1,0 +1,75 @@
+.next-tile-link {
+	font-size: 4em;
+}
+
+.tile-content a {
+  color: $primary-link-color;
+  text-decoration: none;
+  border-bottom:1px dotted;
+  &:hover { color: $primary-link-hover-color; text-decoration: none;}
+}
+
+.btn-sign-in { 
+	@include transition(0.5s);
+	background-color: $primary-color;
+    border-color: darken($primary-color, 7%);
+    color: white; 
+    &:hover { background: darken($primary-color, 7%); color: $neutral-color-light; }
+}
+
+.btn-sign-in-sm {
+	@include transition(0.5s);
+    color: #fff;
+    height: 30px;
+    margin: 10px;
+    padding: 5px 10px;
+    width: 85px;
+    &:hover { background: darken($primary-color, 7%); color: $neutral-color-light; }
+}
+
+.tile-btn-primary {
+	@include tile-link($primary-color);
+}
+
+.tile-btn-blue {
+	@include tile-link($blue);
+}
+
+.tile-btn-green {
+	@include tile-link($green);
+}
+
+.tile-btn-orange {
+	@include tile-link($orange);
+}
+
+
+/*.tile-btn-green {
+	&:hover { 
+		.tile-inner-container {  
+			@include transition(0.5s);
+			background: $green;
+			> h3 { color: #fff !important; }
+		}
+	}
+}
+
+.tile-btn-orange {
+	&:hover { 
+		.tile-inner-container {  
+			@include transition(0.5s);
+			background: $orange;
+			> h3 { color: #fff !important; }
+		}
+	}
+}*/
+
+::selection {
+  background: $primary-link-color;
+  color: #fff
+}
+
+::-moz-selection {
+  background: $primary-link-color;
+  color: #fff;
+}

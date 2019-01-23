@@ -1,0 +1,22 @@
+<h3>Summary</h3>
+
+<% show_fields = [['reference_no_ssi', 'Reference No'],
+                  ['extent_ssm', 'Extent'],
+                  ['language_ssim', 'Language'],
+                  ['access_ssim', 'Access Conditions'],
+                  ['copyright_ssm', 'Copyright'],
+                  ['custodial_history_ssim', 'Custodial History']] %>
+
+<dl class="dl-vertical  dl-invert">
+  <% show_fields.each do |(solr_doc_key, label)| %>
+    <%= show_attribute(document, solr_doc_key, label) %>
+  <% end %>
+
+  <dt> Permanent Link </dt>
+  <dd> <%= catalog_url(document.id) %> </dd>
+
+  <dt>Download</dt>
+  <dd><%= collection_pdf_url(document.id, "Archive Catalogue (PDF format)") %></dd> 
+
+  <%= show_attribute(document, 'repository_ssi', 'Repository') %>
+</dl>

@@ -1,0 +1,52 @@
+/* Body padding fix required to allow for fixed to top navbar */
+body { padding-top: 0; }
+
+/* the following CSS snippet removes the "sub-scrolling" on the navigation bar and 
+ removes the top margin which is there due to the large screen fixed navbar,
+ for a better usability on mobile*/
+
+@media (max-width: 767px) {
+    .navbar-fixed-top {
+        position: relative;
+        top: auto;
+    }
+    .navbar-collapse {
+        max-height: none;
+    }
+    body {
+        margin: 0;
+        padding-top: 0;
+    }
+}
+
+/* spacing fix */
+.input-group-addon {
+    padding: 0 10px;
+}
+
+/* stop form margins from breaking sub-navbar-height */
+.search-query-form {
+    margin: 0;
+}
+
+/* todo: fix for affix jump, need to automatically generate */
+.affix + .container {
+    padding-top:160px
+}
+/*#nav.affix {
+    position: fixed;
+    top: 0px;
+    width: 100%;
+}*/
+
+/* fix twitter widget width*/
+/*iframe[id^='twitter-widget-']{ width:100% !important;}*/
+iframe[id^='twitter-widget-'] { 
+    /* width:760px !important; */
+    width: 325px !important; /* max-width restricted to the smallest column width to stop crashing/wrap */ 
+}
+
+/* adjusting space between header and content as misalignment differences in spacing used */
+.twitter-header-adjuster {
+    margin-bottom: 12px;
+}

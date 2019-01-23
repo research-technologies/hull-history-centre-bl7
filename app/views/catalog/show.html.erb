@@ -1,0 +1,34 @@
+<div id="content" class="col-md-12 show-document">
+
+  <%= render 'previous_next_doc' %>
+  <%= render 'catalog/breadcrumbs', document: @document %>
+
+  <% @page_title = t('blacklight.search.show.title', :document_title => document_show_html_title, :application_name => application_name).html_safe -%>
+  <% content_for(:head) { render_link_rel_alternates } -%>
+
+  <% is_collection = @document['type_ssi'] == 'collection' %>
+  <% show_availability = @document['type_ssi'] == 'library_record'  || @document['type_ssi'] == 'item'  || @document['type_ssi'] == 'piece' %>
+  <% show_item = @document['type_ssi'] == 'subseries'  || @document['type_ssi'] == 'series'  || @document['type_ssi'] == 'subcollection' %>
+
+  <% document_col_class = is_collection ? 'col-md-12' : 'col-md-8' %>
+  <div id="document" class="document <%= document_col_class %> <%= render_document_class %> container-fluid" itemscope itemtype="<%= @document.itemtype %>">
+    <div id="doc_<%= @document.id.to_s.parameterize %>" class="row">
+      <%= render_document_partials @document, blacklight_config.view_config(:show).partials %>
+    </div>
+  </div>
+
+  <% if show_availability %>
+    <div id="sidebar" class="col-md-4">
+      <%= render 'catalog/availability_sidebar',
+                  document: @document %>
+    </div>
+  <% end %>
+
+  <% if show_item %>
+  <div id="sidebar" class="col-md-4">
+    <%= render 'catalog/sub_items_sidebar',
+                document: @document %>
+  </div>
+<% end %>
+
+</div>

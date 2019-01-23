@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<titles>
+
+  <record>
+    <catalog>
+      <call_number>L(SLA).326.8</call_number>
+      <catalog_key>1667917</catalog_key>
+      <catalog_year_of_pub><![CDATA[1814]]></catalog_year_of_pub>
+      <marc primary_key="0|3573986|">
+        <marc_field tag="020" label="ISBN">0852062907</marc_field>
+        <marc_field tag="084" label="Local class number">L(SLA).326.8</marc_field>
+        <marc_field tag="100" label="Personal Author">Fawcett, Bill</marc_field>
+        <marc_field tag="110" label="Corporate Author">Great Britain. Parliament. House of Commons.</marc_field>
+        <marc_field tag="245" label="Title">Abrâegâe des preuves donnâees devant un comitâe de la Chambre des communes de la Grande Bretagne, en 1790 et 1791, en faveur de l'abolition de la traite des ne?gres / traduit de l'anglois par Jean de Carro.</marc_field>
+        <marc_field tag="260" label="Publication info">Vienne, Impr. d'A. Strauss, 1814.</marc_field>
+        <marc_field tag="300" label="Physical description">186 p. ; 22 cm.</marc_field>
+        <marc_field tag="500" label="General Note">Spine title: History of Barton.</marc_field>
+        <marc_field tag="546" label="Language">Parallel Latin text and English translation.</marc_field>
+        <marc_field tag="600" label="Personal subject">Bond, Alice--Biography</marc_field>
+        <marc_field tag="630" label="Title subject">Asiento treaty, 1713. [from old catalog]</marc_field>
+        <marc_field tag="650" label="Subject term">Slave-trade--Great Britain--Early works to 1800.</marc_field>
+        <marc_field tag="650" label="Subject term">Antislavery movements--Great Britain.</marc_field>
+        <marc_field tag="651" label="Geographic term">Africa, Central--Description and travel.</marc_field>
+        <marc_field tag="700" label="Added author">Carro, Joannes de,</marc_field>
+        <marc_field tag="700" label="Added Entry-Personal Name">Poulson, George,</marc_field>
+        <marc_field tag="710" label="Added Entry-Corporate Name">English Heritage.</marc_field>
+      </marc>
+      <callnum_records>
+        <item_number><![CDATA[L(SLA).326.8]]></item_number>
+        <library><![CDATA[HULLHISCEN]]></library>
+        <number_of_call_holds><![CDATA[0]]></number_of_call_holds>
+        <number_of_copies><![CDATA[1]]></number_of_copies>
+        <copies_on_reserve><![CDATA[0]]></copies_on_reserve>
+      </callnum_records>
+      <item_record>
+        <copy_number><![CDATA[1]]></copy_number>
+        <item_id><![CDATA[54072010935546]]></item_id>
+        <library><![CDATA[HULLHISCEN]]></library>
+        <price><![CDATA[¹0.00]]></price>
+        <cat1><![CDATA[ANFHBK]]></cat1>
+        <type><![CDATA[BOOK-REF]]></type>
+        <home_location><![CDATA[LOC-SLAVE]]></home_location>
+        <date_created><![CDATA[18/10/2013]]></date_created>
+        <permanence_status><![CDATA[permanent]]></permanence_status>
+        <current_location><![CDATA[LOC-SLAVE]]></current_location>
+        <times_inventoried><![CDATA[0]]></times_inventoried>
+        <date_inventoried><![CDATA[NEVER]]></date_inventoried>
+      </item_record>
+    </catalog>
+  </record>
+
+</titles>

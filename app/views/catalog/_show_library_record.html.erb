@@ -1,0 +1,47 @@
+<%# A show view for a single LibraryRecord -%>
+<div class="">
+
+  <div class="col-sm-3">
+    <div class="cover-art">
+      <%= display_resource_thumbnail(document, id: isbn(document)) %>
+    </div>
+  </div>
+
+  <div class="col-sm-9">
+
+    <dl class="dl-vertical  dl-invert">
+        <h4>
+          <% authors = Array(document['author_tesim']) %>
+          <% unless authors.empty? %>
+            <dt> <%= author_label(document) %> &nbsp; </dt>
+            <dd>
+              <% authors.each do |auth| %>
+                <%= auth %> <br />
+              <% end %>
+            </dd>
+          <% end %>
+
+          <% unless document['dates_ssim'].blank? %>
+            <dt> Date: &nbsp; </dt>
+            <dd> <%= Array(document['dates_ssim']).join(', ') %> </dd>
+          <% end %>
+        </h4>
+      </dl>
+
+    <% show_fields = [['reference_no_ssi', 'Reference No'],
+                      ['publisher_ssim', 'Publication Information'],
+                      ['physical_description_ssm', 'Physical Description'],
+                      ['notes_ssm', 'General Notes'],
+                      ['subject_ssim', 'Subject Keywords'],
+                      ['isbn_ssm', 'ISBN'],
+                      ['repository_ssi', 'Repository']] %>
+
+    <dl class="dl-vertical  dl-invert">
+      <% show_fields.each do |(solr_doc_key, label)| %>
+        <%= show_attribute(document, solr_doc_key, label) %>
+      <% end %>
+    </dl>
+
+  </div>
+  
+</div>

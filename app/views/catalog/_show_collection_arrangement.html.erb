@@ -1,0 +1,10 @@
+<h3> Arrangement </h3>
+
+<% if document['arrangement_ssm'].blank? %>
+  No arrangement information available.
+<% else %>
+  <br />
+  <div class='left-pad'>
+    <%= Array(document['arrangement_ssm']).join('').html_safe %>
+  </div>
+<% end %>

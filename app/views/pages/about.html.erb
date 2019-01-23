@@ -1,0 +1,57 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-sm-3">
+            <div class="side-panel-container col-sm-2 col-lg-2">
+
+                <%= render :partial => 'shared/side_bar_menu' %>
+                
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <h2>About</h2>
+
+            <p>
+                Further information about the technical aspects behind this online catalog.
+            </p>
+
+
+            <h3>Data</h3>
+            <p>
+                The local studies library material is catalogd using <%= link_to 'SIRSIDynix Symphony', 'http://www.sirsidynix.com/products/symphony', :title => 'Click to go to the SIRSIDynix Symphony website', :target => '_blank' %> software and the data is then exported as XML using one of their standard report formats.  
+            </p>
+            <p>
+                The archives material is catalogd using <%= link_to "Axiell’s CALM", 'http://www.axiell.co.uk/calm', :title => "Click to go to Axiell's CALM website", :target => '_blank' %> software and each collection is then exported as EAD using a slightly modified version of the <%= link_to 'Archives Hub EAD', 'http://www.archiveshub.ac.uk/', :title => 'Click to go to the Archives Hub EAD website', :target => '_blank' %> export routine.
+            </p>
+            <p>
+                The data is then brought together and merged into a Solr index, this behind the scenes work was undertaken for us by <%= link_to 'Data Curation Experts', 'http://curationexperts.com/', :title => 'Click to go to the Data Curation Experts website' , :target => '_blank' %>
+            </p>
+
+            <h3>Display</h3>
+            <p>The data is presented through the use of the <%= link_to 'Blacklight', 'http://projectblacklight.org/', :title => 'Click to go to Project Blacklight website', :target => '_blank' %> software, originally developed at the University of Virginia Library, but is now an open source Ruby on Rails gem. It uses <%= link_to 'Apache Solr', 'http://lucene.apache.org/solr/', :title => 'Click to go to the Apache Solr website', :target => '_blank' %> as the basis for its search engine. </p>
+
+            <p>The display templates were based on the work undertaken to use Blacklight for the <%=  link_to 'University of Hull library catalog', 'http://blacklight.hull.ac.uk/', :title => 'Click to go to the University of Hull Library Catalogue', :target => '_blank' %> and then modified to accommodate History Centre</p>
+
+            <h3>Thanks</h3>
+            <p>Particular thanks for assistance with this project go to:</p>
+
+            <ul style="list-style: circle;">
+                <li>Mark Bussey, Alicia Cozine, Justin Coyne and Valerie Maher at Data Curation Experts</li>
+                <li>Nicki Lake at SIRSI</li>
+                <li>Chris Awre, Simon Lamb and Richard Garbutt at the University of Hull</li>
+            </ul>
+
+            <div class="page-footer">
+                <hr/>
+                <time datetime="2014-10-07" class="date-time">October 2014</time>
+                <p>Simon Wilson<br/>
+                Senior Archivist, Hull History Centre</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

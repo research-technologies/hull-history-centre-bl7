@@ -1,0 +1,190 @@
+<div class="container">
+
+<!-- <div class="back-to-top">
+    <a href="#" title="Click to go to top"><span class="glyphicon glyphicon-arrow-up"></span> <span class="hidden-xs"> Back to top</span></a>
+</div> -->
+
+    <div class="row">
+
+        <div class="col-sm-3">
+            <div class="side-panel-container col-sm-2 col-lg-2">
+
+                <%= render :partial => 'shared/side_bar_menu' %>
+
+                <div class="hr-alt hidden-xs"></div>
+
+                <div class="tile-btn-fw-secondary">
+                    <%= link_to 'Searching', '#searching', :class=> 'scroll-to-anchor', :title => 'Click to go to the searching section' %>
+                </div>
+                <div class="tile-btn-fw-secondary-2">
+                    <%= link_to 'The new interface', '#interface', :class => 'scroll-to-anchor', :title => 'Click to go to the new interface section' %>
+                </div>
+                <div class="tile-btn-fw-secondary-3">
+                    <%= link_to 'Research / Enquiry', '#research', :class => 'scroll-to-anchor', :title => 'Click to go to the research/enquiry section' %>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-sm-9">
+            <h2>Help</h2>
+
+            <p>
+                The History Centre catalog contains information and descriptions to over 330,000 items in the collections, but it does not include images of the documents themselves.  Unfortunately not all of our collections have been catalogd. New material is received on a regular basis and this needs to be sorted, catalogd, numbered and re-boxed before it becomes available for use.  
+            </p>
+
+            <p>
+                We are also retrospectively converting the old typescript lists we have. Please check our <%= link_to 'recently catalogd', 'http://hullhistorycentre.org.uk/discover/hull_history_centre/our_collections/recently_catalogd.aspx', :title => 'Click to go to our recently catalogd page', :target => '_blank' %> page for details of new collections as they are added to our catalog.
+            </p>
+            <p>
+                Information about many of the un-catalogd collections held within the University Archives is included in the catalog even though the archive is <em>currently not accessible</em>.  Please check the availability of the material before making a visit to view a particular collection.
+            </p>
+
+            <div class="hr-alt"></div>
+
+            <h3 id="searching">Searching</h3>
+            <p>
+                Our new catalog allows you to limit your search results by applying filters – by format type (eg an archive item or a book), by date or by repository.
+            </p>
+            <p>
+                If your search returns no hits, try using alternative spellings or other variations, eg for WW1 you could try ‘great war’, ‘first world war’, or ‘war’ where date is 1914-1918.
+            </p>
+            <p>
+                You don’t need to use the wildcard * to truncate a search as the system automatically does this. To search for a particular phrase please use apostrophes – eg ‘phrase’ 
+            </p>
+            <h4>Why do I get more results than I did on the old catalog?</h4>
+            <p>
+                We have improved the visibility of the Local Studies book collections so you can find it all from a single search rather than searching the History Centre catalog and then the City Council library catalog to find material relevant to your enquiry.
+            </p>
+
+            <div class="hr-alt"></div>
+
+            <h3 id="interface">The new interface</h3>
+            <p>
+                This latest version of the catalog is designed to make it easier to restrict aspects of your search using features found in many online retailers. Please see our <%= link_to 'about', 'about', :title => 'Click to go to the about' %> page for further details.
+            </p>
+            <h4>What do the icons mean?</h4>
+            <p>
+                We have used a number of icons to make it easier to distinguish between different types of material we hold, for example:
+            </p>
+
+            <div class="embed-container">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-3">
+                        <%= image_tag("book-thumb-sq-xl.png", :class => "img-responsive") %>
+                        <div class="embedded-label">Book</div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <%= image_tag("dvd-thumb-sq-xl.png", :class => "img-responsive") %>
+                        <div class="embedded-label">CD/DVD</div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <%= image_tag("map-thumb-sq-xl.png", :class => "img-responsive") %>
+                        <div class="embedded-label">Map</div>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <%= image_tag("archive-thumb-sq-xl.png", :class => "img-responsive") %>
+                        <div class="embedded-label">Archive collection</div>
+                    </div>
+                </div>
+            </div>
+
+            <p>
+                If you are looking for a map in the archives use map as a search term and restrict format type to <em>archive item</em>.
+            </p>
+
+            <h4>What is an archive collection?</h4>
+            <p>
+                For each archive collection we hold we produce an overview describing the collection, its creator and a broad overview of its contents.  Restricting a search to <em>archive collection only</em> is a very effective way to identify collections that we hold that are relevant to a particular topic or subject – eg slavery. 
+            </p>
+
+            <h4>Using the filters</h4>
+            <p>
+                When you conduct a search you are now presented with a number of options on the left-hand side. These options allow you to filter the results by format type, by date or by repository.  Some aspects like the subject and author elements only relate to the Local Studies items in the History Centre to may not appear if you are searching for archive items only. If you wish to remove a filter – simply select the black cross above the filter details.
+            </p>
+
+            <h4>Book covers</h4>
+            <p>
+                Book cover images have been added for items that have an ISBN, though many of the local studies titles pre-date this system (introduced in the late 1960s). Please note that the exact book cover may not always match the image due to re-prints and multiple editions of a title. 
+            </p>
+
+            <h4>Date slider</h4>
+            <p>
+                The date slider gives a visual representation of the material that matches the date range.
+            </p> 
+
+            <div class="embed-container">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+                        <%= image_tag("date-slider-image.png", :class => "img-responsive") %>
+                        <!-- <div class="embedded-label">Book</div> -->
+                    </div>
+                </div>
+            </div>
+
+            <p>To restrict your search to a single year – please enter the same date in both of the boxes and select ‘Limit’.  Don’t forget that <em>many archival items do not have a date</em>, nor can one be reasonably estimated – this is why underneath the data slider there are entries marked unknown.
+            </p>
+
+            <h4>Can I browse the breadcrumb trail to navigate up/down a collection?</h4>
+            <p>
+                Many of the large archive collections are sub-divided into sections. You can use the breadcrumb trail (the series of links that can be found at the top of the page) to navigate through the various sections of the catalog.
+            </p>
+
+            <div class="hr-alt"></div>
+
+            <h3 id="research">Research/Enquiry</h3>
+            <h4>Can I check if an item is available before I visit the Centre?</h4>
+            <p>
+                Yes you can – when you conduct a search and look at a specific item the “availability box” appears on the top right hand side of the screen.
+            </p>
+            <p>
+                For items from the Local Studies library you can now select the link <em>Check if this item can be borrowed</em> to see whether loan copies of that title are available at the History Centre (or another library across Hull) or whether the title can only be viewed in the searchroom.
+            </p>
+            <p>
+                For archive items the “availability box” will highlight items where access is restricted either because the item is too fragile to handle, or subject to closure due to data protection. Please see our <%= link_to 'closure guidelines', 'http://hullhistorycentre.org.uk/discover/hull_history_centre/our_collections/source_guides/closure_guidelines.aspx', :title => 'Click to go to the closure guidline information', :target => '_blank' %> for further information.
+            </p>
+
+            <h4>Can somebody check a document for me?</h4>
+            <p>
+                If you are unable to visit the History Centre to carry out your own research, staff at the Centre can undertake research on your behalf for a fee – please see details of our <%= link_to 'enquiry service', 'http://hullhistorycentre.org.uk/discover/hull_history_centre/visit_us/planningyourvisit/enquiry_service.aspx', :title => 'Click to see details of our enquiry service', :target => 'blank' %> for further information. 
+            </p>
+
+            <h4>Can I order online?</h4>
+            <p>
+                You cannot order items directly from the catalog – but you can request upto 5 items in advance – call us on 01482 317500 or email <%= link_to 'historycentre@hullcc.gov.uk', 'mailto:historycentre@hullcc.gov.uk?subject="Enquiry about ordering" ', :title => 'Click to email the History Centre' %> please give us at least 36 hours notice.  Please see our notes on <%= link_to 'planning your visit', 'http://hullhistorycentre.org.uk/discover/hull_history_centre/visit_us/planningyourvisit.aspx', :title => 'Click for help with planning your visit', :target => '_blank' %> including the ID required and the use of digital cameras in the searchroom.
+            </p>
+
+            <h4>How do I order photocopies of items I have found on the catalog?</h4>
+            <p>
+                The Hull History Centre is happy to provide copies of documents and images in its care. However, most of the documents and images are unique and irreplaceable and <em>we will not photocopy any item if we feel the copying process would damage it</em>, especially for volumes. We do allow individuals to use their own camera or we can provide details of our digital image service – please see our <%= link_to 'fees and charges', 'http://hullhistorycentre.org.uk/discover/hull_history_centre/visit_us/planning_your_visit/fees_and_charges.aspx', :title => 'Click to go to our fees and charges page' %> for further information.
+            </p>
+
+            <h4>How do I cite an item in the History Centre collections?</h4>
+            <p>
+                Most publishers and universities have specific guidelines on how material should be cited. We generally encourage references to give the title of the item, if relevant, then the item reference number and then Hull History Centre, for example:
+
+                <div class="well">‘South Riding’ map (Ref L WH/8/8.6/01a), Hull History Centre</div>
+            </p>
+
+            <p>
+                University of Hull students might also be interested to read the <%= link_to 'referencing guide', 'http://libguides.hull.ac.uk/c.php?g=91316&p=588867', :title => 'Click to go to the referencing guide', :target => '_blank' %> on the <em>Archives LibGuide</em> site. 
+            </p>
+
+            <p>
+                Please <%= link_to 'contact us', 'http://www.hullhistorycentre.org.uk/discover/hull_history_centre/contact_us.aspx', :title => 'Click to fins out how to contact us' %> if you wish to feature an image from our collections in a publication.
+            </p>
+
+            
+
+            <div class="page-footer">
+                <hr/>
+                <time datetime="2014-10-07" class="date-time">October 2014</time>
+                <p>Simon Wilson<br/>
+                Senior Archivist, Hull History Centre</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

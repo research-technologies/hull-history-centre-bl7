@@ -1,0 +1,31 @@
+<!-- #TODO: add in svgs for application/uni logo's that will allow to change color dynamically based on 
+navbar/navbar-inverse. Use img fallback =< ie8 or android <= 2.3 (Modernizr.svg or svgeezy) -->
+
+<nav id="navbar" class="headernav navbar navbar-default" role="navigation">
+  <div class=""> <!-- Use container-fluid for full-width -->
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#application-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+      <%=link_to t('blacklight.application_name'), root_path, :class => "navbar-brand", :title => "Click to got to the homepage"%>
+
+    </div>
+    <div class="brand-logo pull-right hidden-xs hidden-sm">
+        <%= link_to image_tag("brand-logo.png", :width => "87", :height => "60"), "http://hullhistorycentre.org.uk", :title => 'Click to go to the Hull History Centre website' %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="application-navbar-collapse">
+      <div class="">
+        <%= render :partial => 'shared/user_util_links' %>
+      </div>
+    </div><!-- /.navbar-collapse -->
+
+  </div><!-- /.container-fluid -->
+</nav>

@@ -1,0 +1,17 @@
+<div id="sidebar-nav" class="well square-corners">
+  <ul class="nav nav-list">
+    <li>
+      <fieldset id="assets">
+        <legend>
+          <h3>Items</h3>
+        </legend>
+        <div id="asset-list">
+          <div class="clearfix">
+               <p>See the items held within this <%= @document['type_ssi'] %></p>
+               <p><%= sub_items_link(@document) %></p>
+          </div>
+        </div>
+      </fieldset>
+    </li>
+  </ul>
+</div>

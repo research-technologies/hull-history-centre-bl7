@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<titles>
+
+  <record>
+    <catalog>
+      <call_number>L821</call_number>
+      <catalog_key>1667420</catalog_key>
+      <catalog_year_of_pub><![CDATA[1948]]></catalog_year_of_pub>
+      <marc primary_key="0|3571349|">
+        <marc_field tag="084" label="Local class number">L821</marc_field>
+        <marc_field tag="100" label="Personal Author">Strachan, W J</marc_field>
+        <marc_field tag="245" label="Title">Apollinaire to Aragon : thirty modern French poets / translated with an introductory essay by W J Strachan</marc_field>
+        <marc_field tag="260" label="Publication info">London : Methuen, 1948</marc_field>
+        <marc_field tag="300" label="Physical description">Reference material</marc_field>
+        <marc_field tag="300" label="Physical description">109p, 20cm</marc_field>
+        <marc_field tag="650" label="Subject term">Poetry, French--20th century</marc_field>
+      </marc>
+      <callnum_records>
+        <item_number><![CDATA[L821]]></item_number>
+        <library><![CDATA[HULLHISCEN]]></library>
+        <number_of_call_holds><![CDATA[0]]></number_of_call_holds>
+        <number_of_copies><![CDATA[1]]></number_of_copies>
+        <copies_on_reserve><![CDATA[0]]></copies_on_reserve>
+      </callnum_records>
+      <item_record>
+        <copy_number><![CDATA[1]]></copy_number>
+        <item_id><![CDATA[54072010934341]]></item_id>
+        <library><![CDATA[HULLHISCEN]]></library>
+        <price><![CDATA[¹0.00]]></price>
+        <cat1><![CDATA[ANFHBK]]></cat1>
+        <cat2><![CDATA[UNKNOWN]]></cat2>
+        <type><![CDATA[BOOK-REF]]></type>
+        <home_location><![CDATA[ON-SHELF]]></home_location>
+        <date_created><![CDATA[15/10/2013]]></date_created>
+        <permanence_status><![CDATA[permanent]]></permanence_status>
+        <current_location><![CDATA[ON-SHELF]]></current_location>
+        <times_inventoried><![CDATA[0]]></times_inventoried>
+        <date_inventoried><![CDATA[NEVER]]></date_inventoried>
+      </item_record>
+    </catalog>
+  </record>
+
+  <record>
+    <catalog>
+      <call_number>L821.08</call_number>
+      <catalog_key>1667617</catalog_key>
+      <catalog_year_of_pub><![CDATA[1869]]></catalog_year_of_pub>
+      <marc primary_key="0|3573197|">
+        <marc_field tag="084" label="Local class number">L821.08</marc_field>
+        <marc_field tag="245" label="Title">Country ballads ; preserved by tradition, never before printed</marc_field>
+        <marc_field tag="260" label="Publication info">Pateley Bridge, Thomas Thorpe</marc_field>
+        <marc_field tag="300" label="Physical description">Reference material</marc_field>
+        <marc_field tag="300" label="Physical description">31p, 18cm</marc_field>
+        <marc_field tag="650" label="Subject term">Yorkshire poets</marc_field>
+        <marc_field tag="650" label="Subject term">English poetry--19th century</marc_field>
+        <marc_field tag="651" label="Geographic term">Yorkshire--Poetry</marc_field>
+      </marc>
+      <callnum_records>
+        <item_number><![CDATA[L821.08]]></item_number>
+        <library><![CDATA[HULLHISCEN]]></library>
+        <number_of_call_holds><![CDATA[0]]></number_of_call_holds>
+        <number_of_copies><![CDATA[1]]></number_of_copies>
+        <copies_on_reserve><![CDATA[0]]></copies_on_reserve>
+      </callnum_records>
+      <item_record>
+        <copy_number><![CDATA[1]]></copy_number>
+        <item_id><![CDATA[54072010934119]]></item_id>
+        <library><![CDATA[HULLHISCEN]]></library>
+        <price><![CDATA[¹0.00]]></price>
+        <cat1><![CDATA[ANFPBK]]></cat1>
+        <cat2><![CDATA[UNKNOWN]]></cat2>
+        <type><![CDATA[BOOK-REF]]></type>
+        <home_location><![CDATA[ON-SHELF]]></home_location>
+        <date_created><![CDATA[17/10/2013]]></date_created>
+        <permanence_status><![CDATA[permanent]]></permanence_status>
+        <current_location><![CDATA[ON-SHELF]]></current_location>
+        <times_inventoried><![CDATA[0]]></times_inventoried>
+        <date_inventoried><![CDATA[NEVER]]></date_inventoried>
+      </item_record>
+    </catalog>
+  </record>
+
+  <record>
+    <catalog>
+      <call_number>L821</call_number>
+      <catalog_key>1667437</catalog_key>
+      <catalog_year_of_pub><![CDATA[1876]]></catalog_year_of_pub>
+      <marc primary_key="0|3571353|">
+        <marc_field tag="084" label="Local class number">L821</marc_field>
+        <marc_field tag="100" label="Personal Author">Taylor, John</marc_field>
+        <marc_field tag="245" label="Title">Works of John Taylor the water poet / edited by Charles Hindley</marc_field>
+        <marc_field tag="246" label="Variant title">John Taylor's observations and travel from London to Hamburgh</marc_field>
+        <marc_field tag="246" label="Variant title">Three vveekes, three daies, and three houres obseruations and trauel, from London to Hamburgh in Germanie : amongst Iewes and gentiles, with descriptions of townes and towers, castles and cittadels, artificiall gallowses, naturall hangmen: and dedicated for the present, to the absent Odcombian knight errant, Sr. Thomas Coriat. Great Brittaines error, and the worlds mirror.</marc_field>
+        <marc_field tag="260" label="Publication info">London : Reeves and Turner, 1876</marc_field>
+        <marc_field tag="300" label="Physical description">Reference material</marc_field>
+        <marc_field tag="300" label="Physical description">ca. 700 p. ; 28 cm.</marc_field>
+        <marc_field tag="500" label="General Note">With facsimile reproduction of original title pages.</marc_field>
+        <marc_field tag="651" label="Geographic term">Germany--Description and travel--Early works to 1800.</marc_field>
+      </marc>
+      <callnum_records>
+        <item_number><![CDATA[L821]]></item_number>
+        <library><![CDATA[HULLHISCEN]]></library>
+        <number_of_call_holds><![CDATA[0]]></number_of_call_holds>
+        <number_of_copies><![CDATA[1]]></number_of_copies>
+        <copies_on_reserve><![CDATA[0]]></copies_on_reserve>
+      </callnum_records>
+      <item_record>
+        <copy_number><![CDATA[1]]></copy_number>
+        <item_id><![CDATA[54072010934275]]></item_id>
+        <library><![CDATA[HULLHISCEN]]></library>
+        <price><![CDATA[¹0.00]]></price>
+        <cat1><![CDATA[ANFHBK]]></cat1>
+        <cat2><![CDATA[UNKNOWN]]></cat2>
+        <type><![CDATA[BOOK-REF]]></type>
+        <home_location><![CDATA[ON-SHELF]]></home_location>
+        <date_created><![CDATA[15/10/2013]]></date_created>
+        <permanence_status><![CDATA[permanent]]></permanence_status>
+        <current_location><![CDATA[ON-SHELF]]></current_location>
+        <times_inventoried><![CDATA[0]]></times_inventoried>
+        <date_inventoried><![CDATA[NEVER]]></date_inventoried>
+      </item_record>
+    </catalog>
+  </record>
+
+</titles>

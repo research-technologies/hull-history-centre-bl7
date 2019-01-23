@@ -1,0 +1,163 @@
+<!-- Carousel
+================================================== -->
+<div id="carousel" class="carousel slide" data-interval="10000" data-pause="hover" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel" data-slide-to="1"></li>
+    <li data-target="#carousel" data-slide-to="2"></li>
+    <li data-target="#carousel" data-slide-to="3"></li>
+  </ol>
+
+  <div class="carousel-inner">
+
+    <div class="item active">
+      <div id="carousel-image-1" class="image-holder"></div>
+      <div class="container">
+        <div class="carousel-caption">
+          <h1> <!-- Welcome to the <br/> --> Hull History Centre Catalogue</h1>
+          <p class="hidden-xs">&nbsp;</p>
+          <%= render partial: 'home_search' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+
+      <div id="carousel-image-2" class="image-holder"></div>
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Search our library and archive collections</h1>
+          <!-- <p>Details of the collections we hold relating to the First World War</p> -->
+          <p class="hidden-xs">&nbsp;</p>
+          <%= render partial: 'home_search' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div id="carousel-image-3" class="image-holder"></div>
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Search. Discover. Visit.</h1>
+          <!-- <p>Did you know our enquiry service can undertake research on your behalf?</p> -->
+          <p class="hidden-xs">&nbsp;</p>
+          <%= render partial: 'home_search' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="item">
+      <div id="carousel-image-4" class="image-holder"></div>
+      <div class="container">
+        <div class="carousel-caption">
+          <h1> <!-- Welcome to the <br/> --> Hull History Centre Catalogue</h1>
+          <p class="hidden-xs">&nbsp;</p>
+          <%= render partial: 'home_search' %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel" data-slide="prev">
+    <span class="icon-prev"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel" data-slide="next">
+    <span class="icon-next"></span>
+  </a>  
+
+</div>
+
+<!-- sub menu l-->
+
+<!-- <div id="header-sub-menu" class="">
+  <div class="row tile-light-gray">
+    <div class="col-md-3 menu-item">
+      <a href="/" id="item1">View Catalogue</a>
+    </div>
+    <div class="col-md-3 menu-item">
+      <a href="/" id="item2">Latest News</a>
+    </div>
+    <div class="col-md-3 menu-item">
+      <a href="/" id="item3">Our Collections</a>
+    </div>
+    <div class="col-md-3 menu-item">
+      <a href="/" id="item4">Help</a>
+    </div>
+</div>
+</div>
+ -->
+
+
+<!-- tile1: sections -->
+<div id="tile1" class="tile tile-white container">
+
+    <div class="tile-container tile-content">
+
+      <div class="row">
+        <%= render :partial => 'shared/home_tile_sections' %>
+       </div>
+       
+    </div>
+
+</div><!-- .tile1 -->
+
+<!-- tile2: -->
+<!-- <div id="tile2" class="tile tile-light-gray">
+
+  <div class="row">
+
+    <div class="col-md-10 col-md-offset-1">
+      <div class="tile-container tile-content">
+        <h2>News</h2>
+
+        <article class="news-article">
+          <time datetime="2014-09-019" class="bar-time">July 10, 2014</time>
+          <h3>News Article 1</h3>
+          <p class="doc">
+            Fan of Minecraft? - see our new site HullCraft.com - using plans from the archives and earn some badges!
+          </p>
+          <div class="tile-btn-primary">
+            <a class="read-article" title="Click to read this article" href="/">Read article →</a>
+          </div>
+        </article>
+
+        <article class="news-article">
+          <time datetime="2014-09-019" class="bar-time">July 9, 2014</time>
+          <h3>News Article 2</h3>
+          <p class="doc">
+            Revised opening hours - we are closed to the public on Mondays and only open on 1st and 3rd Saturdays of the month.
+          </p>
+          <div class="tile-btn-primary">
+            <a class="read-article" title="Click to read this article" href="http://www2.hull.ac.uk/administration/tel.aspx">Read article →</a>
+          </div>
+        </article>
+
+        <article class="news-article">
+        <h3>Archived news</h3>
+          
+          <div class="tile-btn-primary">
+            <a class="read-article" title="Click to read this article" href="/">View archive →</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+  </div>
+
+</div> --><!-- .tile2 -->
+
+
+<!-- .tile3: twitter -->
+<!-- <div id="tile3" class="tile tile-white">
+
+  <div class="row">
+
+    <%#= render :partial => 'shared/home_tile_twitter' %>
+    
+  </div>
+
+</div> --><!-- .tile3 -->

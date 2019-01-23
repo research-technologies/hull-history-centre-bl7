@@ -1,0 +1,13 @@
+<% # container for a single doc -%>
+<div class="document <%= render_document_class document %>" itemscope itemtype="<%= document.itemtype %>">
+
+    <div class="col-sm-3 col-md-2">
+        <div class="cover-art">
+            <%= display_resource_thumbnail(document, id: isbn(document))%>
+        </div>
+    </div>
+
+    <div class="col-sm-9 col-md-10">
+        <%= render_document_partials document, blacklight_config.view_config(document_index_view_type).partials, :document_counter => document_counter %>
+    </div>
+</div>

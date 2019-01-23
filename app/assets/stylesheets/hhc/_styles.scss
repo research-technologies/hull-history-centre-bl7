@@ -1,0 +1,51 @@
+.brand-title a { 
+    color: $brand-title-color; 
+    text-decoration: none;
+    font-size: $brand-title-size;
+    font-weight: 200;
+}
+
+.navbar-brand {
+    padding: 30px 30px 30px 30px;
+}
+
+/* adjust font size on small screen due to large title */
+@media (max-width: 480px), (max-width: 767px) { 
+    .navbar-brand {
+        font-size: 15px;
+        line-height: 22px;
+    }
+}
+
+.page-shadow {
+    box-shadow: 0 5px 20px -2px darken($footer-color, 25%);
+}
+
+.primary-color { color: $primary-color; }
+.primary-color-2 { color: $primary-color-2; }
+.primary-color-3 { color: $primary-color-3; }
+.primary-color-4 { color: $primary-color-4; }
+
+.primary-bg-color { background: $primary-color }
+.primary-bg-color-2 { background: $primary-color-2; }
+.primary-bg-color-3 { background: $primary-color-3; }
+.primary-bg-color-4 { background: $primary-color-4; }
+
+.secondary-color { background: $secondary-color; }
+.secondary-color-2 { background: $secondary-color-2; }
+.secondary-color-3 { background: $secondary-color-3; }
+.secondary-color-4 { background: $secondary-color-4; }
+
+.secondary-bg-color { background: lighten ($secondary-color, 75%); }
+.secondary-bg-color-2 { background: lighten ($secondary-color-2, 75%); }
+.secondary-bg-color-3 { background: lighten ($secondary-color-3, 75%); }
+.secondary-bg-color-4 { background: lighten ($secondary-color-4, 75%); }
+
+.date-time {
+    display: block;
+    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    color: $neutral-color;
+    margin: 0 0 0.2rem 0;
+}

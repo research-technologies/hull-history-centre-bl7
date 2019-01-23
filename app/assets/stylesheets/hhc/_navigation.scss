@@ -1,0 +1,242 @@
+/* links */
+a { 
+    color: $primary-color;
+}
+
+/*header navigation*/
+.headernav { z-index: 1045; }
+
+/* sub navigation */
+.subnav { 
+	top: $sub-navbar-height;
+	/*height: $subnavbar-height;*/
+	/*padding: ($subnavbar-height * 0.25) 0 ($subnavbar-height * 0.75) 0;*/
+	padding: ($grid-gutter-width / 2) 0;
+	z-index: 999;
+}
+
+@media (max-width: 480px), (max-width: 767px) { 
+  .subnav { 
+	top: 0;
+	}
+}
+
+.next-tile-link {
+	font-size: 4em;
+}
+
+.tile-content a, p a {
+  color: $primary-link-color;
+  text-decoration: none;
+  border-bottom:1px dotted;
+  @include transition(0.5s);
+  &:hover { color: $primary-link-hover-color; text-decoration: none;}
+}
+
+.carousel-caption {
+    p {
+        > a { text-decoration: none; border-bottom: none;
+            &:hover { border-bottom: 1px dotted; color: #dadada; }
+         }
+    }
+}
+
+.btn, .facets-toggle {
+    @include transition(0.5s);
+}
+
+.btn-sign-in { 
+    @include transition(0.5s);
+    background-color: $primary-color;
+    border-color: darken($primary-color, 7%);
+    color: white; 
+    &:hover { background: darken($primary-color, 7%); color: $neutral-color-light; }
+}
+
+.btn-sign-in-sm {
+	@include transition(0.5s);
+    color: #fff;
+    height: 30px;
+    margin: 10px;
+    padding: 5px 10px;
+    width: 85px;
+    &:hover { background: darken($primary-color, 7%); color: $neutral-color-light; }
+}
+
+/* tile buttons */
+.tile-btn-primary { @include tile-link($primary-color); }
+.tile-btn-primary-2 { @include tile-link($primary-color-2); }
+.tile-btn-primary-3 { @include tile-link($primary-color-3); }
+.tile-btn-primary-4 { @include tile-link($primary-color-4); }
+
+.tile-btn-secondary { @include tile-link($secondary-color); }
+.tile-btn-secondary-2 { @include tile-link($secondary-color-2); }
+.tile-btn-secondary-3 { @include tile-link($secondary-color-3); }
+.tile-btn-secondary-4 { @include tile-link($secondary-color-4); }
+
+/* tile buttons - full width of container */
+/* max-width fix applied to stop crashing in side panel*/
+.tile-btn-fw-primary { @include tile-link-fw($primary-color); @media (min-width: 767px) { max-width: 265px; } }
+.tile-btn-fw-primary-2 { @include tile-link-fw($primary-color-2); @media (min-width: 767px) { max-width: 265px; } }
+.tile-btn-fw-primary-3 { @include tile-link-fw($primary-color-3); @media (min-width: 767px) { max-width: 265px; } }
+.tile-btn-fw-primary-4 { @include tile-link-fw($primary-color-4); @media (min-width: 767px) { max-width: 265px; } }
+
+.tile-btn-fw-secondary { @include tile-link-fw($secondary-color); @media (min-width: 767px) { max-width: 265px; } }
+.tile-btn-fw-secondary-2 { @include tile-link-fw($secondary-color-2); @media (min-width: 767px) { max-width: 265px; } }
+.tile-btn-fw-secondary-3 { @include tile-link-fw($secondary-color-3); @media (min-width: 767px) { max-width: 265px; } }
+.tile-btn-fw-secondary-4 { @include tile-link-fw($secondary-color-4); @media (min-width: 767px) { max-width: 265px; } }
+
+.tile-btn-fw-inverse-primary { @include tile-link-fw-inverse($primary-color); @media (min-width: 767px) { max-width: 265px; } }
+.tile-btn-fw-inverse-primary-2 { @include tile-link-fw-inverse($primary-color-2); @media (min-width: 767px) { max-width: 265px; } }
+.tile-btn-fw-inverse-primary-3 { @include tile-link-fw-inverse($primary-color-3); @media (min-width: 767px) { max-width: 265px; } }
+.tile-btn-fw-inverse-primary-4 { @include tile-link-fw-inverse($primary-color-4); @media (min-width: 767px) { max-width: 265px; } }
+
+.tile-btn-fw-inverse-secondary { @include tile-link-fw-inverse($secondary-color); @media (min-width: 767px) { max-width: 265px; } }
+.tile-btn-fw-inverse-secondary-2 { @include tile-link-fw-inverse($secondary-color-2); @media (min-width: 767px) { max-width: 265px; } }
+.tile-btn-fw-inverse-secondary-3 { @include tile-link-fw-inverse($secondary-color-3); @media (min-width: 767px) { max-width: 265px; } }
+.tile-btn-fw-inverse-secondary-4 { @include tile-link-fw-inverse($secondary-color-4); @media (min-width: 767px) { max-width: 265px; } }
+
+.tile-btn-blue {
+    @include tile-link($blue);
+}
+
+.tile-btn-green {
+    @include tile-link($green);
+}
+
+.tile-btn-orange {
+    @include tile-link($orange);
+}
+
+.scroll-to-top {
+    position: fixed; 
+    bottom: 50px; 
+    left: 50px;
+    z-index: 1000;
+    @include tile-link($secondary-color-4);
+    span.glyphicon-arrow-up {
+        font-size: 1.2em;
+    }
+}
+
+::selection {
+  background: $primary-link-color;
+  color: #fff
+}
+
+::-moz-selection {
+  background: $primary-link-color;
+  color: #fff;
+}
+
+/* applied filters */
+.appliedFilter { 
+    > span, > a { 
+        background: $applied-filter-color; 
+        color: set-overlay-text-color($applied-filter-color);
+        border-color: darken($applied-filter-color, 5%);
+    }
+    .filterName:after { color: #fff; }
+    .constraint-value:hover, .constraint-value:active {
+        background: $applied-filter-color; 
+        color: set-overlay-text-color($applied-filter-color);
+        border-color: darken($applied-filter-color, 5%); 
+    }
+}
+
+/* sort and per page */
+#sort-dropdown, #per_page-dropdown {
+    > button { 
+        background: $btn-base-color; 
+        border-color: darken($btn-base-color, 5%); 
+        @include transition(0.5s);
+        a, .caret { color: set-overlay-text-color($btn-base-color); }
+        &:hover, &:active, { 
+            color: set-overlay-text-color($sort-and-per-page-color);
+            background: $sort-and-per-page-color; 
+            border-color: darken($sort-and-per-page-color, 5%); 
+        }
+    }
+}
+
+/* search widgets */
+.search-widgets {
+    > a { 
+        background: $btn-base-color; 
+        border-color: darken($btn-base-color, 5%); 
+        @include transition(0.5s);
+        a, .caret { color: set-overlay-text-color($btn-base-color); }
+        &:hover, &:active, { 
+            color: set-overlay-text-color($sort-and-per-page-color); 
+            background: $sort-and-per-page-color; 
+            border-color: darken($sort-and-per-page-color, 5%); 
+        }
+    }
+}
+
+/* document + components*/
+.document * a, .page_links > a {
+    text-decoration: none;
+    @include transition(0.5s);
+    &:hover { text-decoration: none; border-bottom: 1px dotted; };
+}
+
+/* facet panel */
+.panel-title {
+    font-size: 14px;
+    a, a:hover { text-decoration: none;}
+}
+
+.facet-label, .facet-count {
+    font-size: 90%;
+}
+.facet_limit > .panel-heading {
+    @include transition(0.5s);
+    &:hover { background:  darken(whitesmoke, 5%); }
+}
+
+.facet_limit-active > .panel-heading {
+    @include transition(0.5s);
+    &:hover { background:  darken(#d6e9c6, 2%); }
+}
+
+.facet_limit-active > .panel-heading + .panel-collapse > .panel-body {
+    background: #dff0d8;
+    border-top-color: #dff0d8;
+}
+.panel-body > ul { margin-bottom: 0; }
+
+.facet-label a, .facet-count {
+    color: #444;
+    text-shadow: 0px 1px 0px #EFEFEF;
+}
+
+.facet-label {
+    padding-right: 0 !important;
+    .selected { float: left; }
+    .facet-count { float: right; }
+}
+
+@media (max-width: 480px), (max-width: 767px) { 
+    #facets .top-panel-heading {
+        border: 1px solid #CCC;
+        margin-bottom: 1em;
+        margin-top: 1em;
+        background: $primary-color-3;
+        color: #fff;
+        > .facets-toggle { margin-right: 0; }
+    }
+    .panel-title, .panel-body {
+        font-size: 16px;
+        line-height: 25px;
+    }
+    .appliedFilter > span, .appliedFilter > a {
+        font-size: 16px;
+    }
+
+}
+
+
+/*.facet_limit-active > .panel-heading {
+    background-color: #d6e9c6;
+}*/

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE ead PUBLIC '+//ISBN 1-931666-00-8//DTD ead.dtd (Encoded Archival Description (EAD) Version 2002)//EN' 'ead.dtd'>
+<ead>
+
+  <ea
+    dheader countryencoding="iso3166-1" dateencoding="iso8601" langencoding="iso639-2b" relatedencoding="Dublin Core" repositoryencoding="iso15511" scriptencoding="iso15924">
+    <eadid countrycode="GB" mainagencycode="050" identifier="GB-050-u-dar">GB-050-u-dar</eadid>
+    <filedesc>
+      <titlestmt>
+        <titleproper>Hull University Archives: Papers of Robin Page Arnot </titleproper>
+        <author encodinganalog="creator">Hull University Archives</author>
+      </titlestmt>
+      <pub
+        licationstmt>
+        <date normal="2014">08/05/2014</date>
+      </publicationstmt>
+    </filedesc>
+    <profiledesc>
+      <creation>Finding aid created by export from CALM v9.1.86 Archives Hub EAD2002</creation>
+    </profiledesc>
+  </eadheader>
+
+  <archdesc relatedencoding="ISAD(G)v2" level="fonds">
+    </dsc>
+  </archdesc>
+</ead>

@@ -1,0 +1,47 @@
+<%# A show view for a single Collection -%>
+
+<% unless document['dates_ssim'].blank? %>
+  <h4>
+    <dl class="dl-vertical  dl-invert">
+      <dt> Dates: &nbsp; </dt>
+      <dd> <%= Array(document['dates_ssim']).join(', ') %> </dd>
+    </dl>
+  </h4>
+<% end %>
+
+<div class="row">
+  <% @show_tab ||= 'summary' %>
+
+  <div id="tab-sidebar" class="col-sm-2">
+
+    <%= display_resource_thumbnail (document) %>
+
+    <% menu_item_classes = 'tab-menu-item col-md-12' %>
+
+    <div class="tile-btn-fw-secondary">
+      <%= link_to 'Summary', catalog_path(document.id, tab: 'summary'), class: "#{tab_class('summary', @show_tab)} #{menu_item_classes}" %>
+    </div>
+
+    <div class="tile-btn-fw-secondary">
+      <%= link_to 'Description', catalog_path(document.id, tab: 'description'), class: "#{tab_class('description', @show_tab)} #{menu_item_classes}" %>
+    </div>
+
+    <div class="tile-btn-fw-secondary">
+      <%= link_to 'Arrangement', catalog_path(document.id, tab: 'arrangement'), class: "#{tab_class('arrangement', @show_tab)} #{menu_item_classes}" %>
+    </div>
+
+    <div class="tile-btn-fw-secondary">
+      <%= link_to 'Related Material', catalog_path(document.id, tab: 'related'), class: "#{tab_class('related', @show_tab)} #{menu_item_classes}" %>
+    </div>
+
+    <div class="tile-btn-fw-secondary">
+      <%= link_to 'Search', catalog_path(document.id, tab: 'search'), class: "#{tab_class('search', @show_tab)} #{menu_item_classes}" %>
+    </div>
+
+  </div>
+
+  <div id="tab-content" class="col-sm-10">
+    <%= render "catalog/show_collection_#{@show_tab}", document: document %>
+  </div>
+
+</div>

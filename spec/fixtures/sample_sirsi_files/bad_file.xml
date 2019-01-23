@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<ti  tles>
+  <re
+    cord>
+    <catalog>
+      <call_number>L(SLA).326.8</call_number>
+      <catalog_key>1667917</catalog_key>
+      <catalog_year_of_pub><![CDATA[1814]]></catalog_year_of_pub>
+      <marc primary_key="0|3573986|">
+        <marc_field tag="020" label="ISBN">0852062907</marc_field>
+      </ma9rc>
+        <item_number><![CDATA[L(SLA).326.8]]></item_number>
+        <library><![CDATA[HULLHISCEN]]></library>
+        <number_of_call_holds><![CDATA[0]]></number_of_call_holds>
+        <number_of_copies><![CDATA[1]]></number_of_copies>
+        <copies_on_reserve><![CDATA[0]]></copies_on_reserve>
+      </callnum_records>
+      </item_record>
+    </catalog>
+  </record>
+
+</titles>

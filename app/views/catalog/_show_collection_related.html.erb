@@ -1,0 +1,9 @@
+<h3>Related Material</h3>
+
+<% show_fields = [['related_ssm', 'Related Material'],
+                 ['pub_notes_ssm', 'Publication Notes']] %>
+<dl class="dl-vertical  dl-invert">
+  <% show_fields.each do |(solr_doc_key, label)| %>
+    <%= show_attribute(document, solr_doc_key, label) %>
+  <% end %>
+</dl>

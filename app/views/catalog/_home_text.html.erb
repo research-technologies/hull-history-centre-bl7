@@ -1,0 +1,26 @@
+<div class='row'>
+  <!-- <div class='col-md-12'>
+    <%#= image_tag 'Logo438C.jpg', class: 'main-home-image' %>
+  </div>
+ -->
+  <div class='col-md-12'>
+    <h2>Hull History Centre Catalogue Search</h2>
+    <p>There are numerous ways to find what you are looking for in the History Centre Catalogue, here's how:</p>
+    <h3>Search</h3>
+    <p>
+       Enter a criteria into the search field below and press the Search button. You can limit your search to Title, Author, Subject or Reference No by using the accompanying drop down list.
+    </p>
+
+    <%= render_search_bar %>
+
+    <h3>Advanced Search</h3>
+    <p> For more advanced searches of the History Centre Catalogue use the Advanced Search page.</p>
+    <div class="tile-content tile-btn-secondary">
+      <%= link_to 'Advanced Search', '/advanced', :title => 'Click to go to the advanced search page' %>
+    </div>
+
+    <h3>Browse</h3>
+    <p>Use the filters to the left of the screen to start browsing our catalogue, selecting more options will limit your search results.</p>
+  </div>
+
+</div>

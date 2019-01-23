@@ -1,0 +1,32 @@
+.news-article {
+	margin: .5rem 0 3.5rem 0;
+	.bar-time {
+		display: block;
+		font-size: 1.2rem;
+		letter-spacing: 0.2rem;
+		text-transform: uppercase;
+		color: $neutral-color;
+		margin: 0 0 0.2rem 0;
+	}	
+	> h3 { margin: 0.2rem 0 0.5rem;}
+	.read-artlec { margin: 0 0 0.2rem 0; }
+}
+
+.hr-alt { 
+	background-image: linear-gradient(to right, #fff, $neutral-color-light 35%, $neutral-color-light 65%, #fff);
+
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 40% 1px;
+/*    margin-top: 10px;
+    padding-bottom: 14px;*/
+    padding-top: 20px;
+    text-align: center;
+    color: transparent;
+
+	margin: ($grid-gutter-width * 1.8) 0 $grid-gutter-width 0;
+}
+
+.doc {
+    margin: 20px 0;
+}

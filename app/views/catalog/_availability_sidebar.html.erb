@@ -1,0 +1,31 @@
+<div id="sidebar-nav" class="well square-corners">
+  <ul class="nav nav-list">
+    <li>
+      <fieldset id="assets">
+        <legend>
+          <h3> Availability </h3>
+        </legend>
+        <div id="asset-list">
+          <div class="clearfix">
+            <% unless @document['type_ssi'] == 'library_record' %>
+               <% if ead_item_access_closed?(@document) %>
+                 <p><%= t('blacklight.show.item_closed_access') %></p>
+                <% else %>
+                  <p><%= t('blacklight.show.item_open_access') %></p>
+                <% end %>
+            <% end %>
+
+            <label> Reference No: </label> <br />
+            <%= @document['reference_no_ssi'] %>
+
+            <% if @document["type_ssi"] == "library_record" && @document["repository_ssi"] == "Hull Local Studies Library" %>
+              <p>
+                <%= prism_search_link(@document["title_ssi"]) %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+      </fieldset>
+    </li>
+  </ul>
+</div>
