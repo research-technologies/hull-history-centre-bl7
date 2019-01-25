@@ -3,7 +3,7 @@ module Ead
     extend CommonImporterMethods
 
     def self.create_solr_docs_from_file_data(filename)
-      solr = RSolr.connect :url => 'http://localhost:8983/solr/blacklight-core'
+      solr = Blacklight.default_index.connection
       errors = []
       objects = Ead::Parser.parse(filename)
 
