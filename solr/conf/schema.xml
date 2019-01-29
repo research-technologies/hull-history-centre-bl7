@@ -15,6 +15,9 @@
     <field name="lat" type="tdouble" stored="true" indexed="true" multiValued="false"/>
     <field name="lng" type="tdouble" stored="true" indexed="true" multiValued="false"/>
     <!-- NOTE:  not all possible Solr field types are represented in the dynamic fields -->
+    
+    <!-- Reference number indexed for improved search results -->
+    <field name="reference_no_search" type="reference_no_text" indexed="true" stored="false" multiValued="false" />
 
     <!-- text (_t...) -->
 
@@ -382,6 +385,25 @@
         <tokenizer class="solr.PathHierarchyTokenizerFactory" delimiter="/" />
       </analyzer>
     </fieldType>
+    
+    <!-- reference_no_text field for indexing the reference number
+        Things to note, spaces and non alphanumeric chars are being stripped for indexing/querying
+        EdgeNGramFilterFactory is used on indexing to provide flexibility with search terms,edge is specified from front.
+          see https://wiki.apache.org/solr/AnalyzersTokenizersTokenFilters#solr.EdgeNGramFilterFactory
+     -->
+     <fieldType name="reference_no_text" class="solr.TextField" positionIncrementGap="100">
+       <analyzer type="index">
+           <tokenizer class="solr.StandardTokenizerFactory"/>
+           <filter class="solr.LowerCaseFilterFactory" />
+           <filter class="solr.EdgeNGramFilterFactory" minGramSize="2" maxGramSize="15" />
+           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="([\s|\W])" replacement=""/>
+       </analyzer>
+        <analyzer type="query">
+           <tokenizer class="solr.StandardTokenizerFactory"/>
+           <filter class="solr.LowerCaseFilterFactory" />
+           <charFilter class="solr.PatternReplaceCharFilterFactory" pattern="([\s|\W])" replacement=""/>
+       </analyzer>
+     </fieldType>   
 
   </types>
 

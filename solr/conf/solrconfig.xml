@@ -43,48 +43,64 @@
        -->
         <str name="qf">
           id
-          full_title_tsim
-          short_title_tsim
-          alternative_title_tsim
-          active_fedora_model_ssi
-          title_tsim
-          author_tsimesim
-          subject_tsim
+          title_tesim
+          author_tesim
+          subject_tesim
+          description_tesim
+          reference_no_search
+          reference_no_ssi
           all_text_timv
         </str>
         <str name="pf">
-          all_text_timv^10
+          description_tesim^10
+          reference_no_search
+          reference_no_ssi
+          all_text_timv
         </str>
 
        <str name="author_qf">
-          author_tsim
+          author_tesim
        </str>
        <str name="author_pf">
+          author_tesim
        </str>
        <str name="title_qf">
-          title_tsim
-          full_title_tsim
-          short_title_tsim
-          alternative_title_tsim
+          title_tesim
+          full_title_tesim
+          short_title_tesim
+          alternative_title_tesim
        </str>
        <str name="title_pf">
+          title_tesim
+          full_title_tesim
+          short_title_tesim
+          alternative_title_tesim
        </str>
        <str name="subject_qf">
-          subject_tsim
+          subject_tesim
        </str>
        <str name="subject_pf">
+          subject_tesim
        </str>
+       <str name="reference_no_qf">
+          reference_no_search^100
+          reference_no_ssi
+       </str>
+      <str name="reference_no_pf">
+          reference_no_search^1000
+          reference_no_ssi
+      </str>
 
        <str name="fl">
          *,
          score
        </str>
 
-       <str name="facet">true</str>
-       <str name="facet.mincount">1</str>
-       <str name="facet.limit">10</str>
        <str name="facet.field">active_fedora_model_ssi</str>
-       <str name="facet.field">subject_ssim</str>
+       <str name="facet.field">subject_tesim</str>
+       <str name="facet.field">repository_ssi</str>
+       <str name="facet.field">author_ssim</str>
+       <str name="facet.field">language_ssim</str>
 
        <str name="spellcheck">true</str>
        <str name="spellcheck.dictionary">default</str>
@@ -129,7 +145,6 @@
      </lst>
   </requestHandler>
   
-  <!-- JA added -->
   <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
   <requestHandler name="document" class="solr.SearchHandler" >
     <lst name="defaults">
@@ -139,7 +154,6 @@
       <str name="q">{!raw f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
     </lst>
   </requestHandler>
-
 
   <searchComponent name="spellcheck" class="solr.SpellCheckComponent">
     <str name="queryAnalyzerFieldType">textSpell</str>
