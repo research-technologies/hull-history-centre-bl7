@@ -189,6 +189,8 @@
     </lst>
   </searchComponent>
 
+<!-- suggest searchComponent and requestHandler disabled by default due to performance penalties -->
+<!-- 
   <searchComponent name="suggest" class="solr.SuggestComponent">
     <lst name="suggester">
       <str name="name">mySuggester</str>
@@ -209,6 +211,7 @@
       <str>suggest</str>
     </arr>
   </requestHandler>
+-->
 
   <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" />
 

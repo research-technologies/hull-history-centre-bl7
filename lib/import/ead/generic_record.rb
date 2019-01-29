@@ -29,6 +29,7 @@ module Ead
             dates_normal: 'did/unitdate/@normal',
             collection_id: "#{collection_xpath}/#{Ead::Collection.fields_map[:id]}",
             collection_title: "#{collection_xpath}/#{Ead::Collection.fields_map[:title]}",
+            dao: 'did/dao/@entityref'
           }
         end
 
@@ -51,6 +52,9 @@ module Ead
             'date_ssi' => sortable_date(attributes[:dates_normal]),
             'collection_id_ssi' => format_id(attributes[:collection_id]),
             'collection_title_ss' => attributes[:collection_title],
+            'dao_ssi' => attributes[:dao],
+            'all_text_timv' => attributes[:extracted_text],
+            'file_set_ids_ssim' => attributes[:file_set_ids],
           }
         end
 
