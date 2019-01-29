@@ -24,7 +24,7 @@ module ShowHelper
     # breadcrumb's title as a String.
     crumbs = keys.map do |(title_key, id_key)|
       breadcrumb_title = document[title_key]
-      if document[id_key]
+      if document[id_key].present?
         link_to breadcrumb_title, catalog_path(document[id_key])
       else
         breadcrumb_title
