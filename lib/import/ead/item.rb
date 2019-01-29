@@ -46,7 +46,7 @@ module Ead
           'series_title_ss' => attributes[:series_title],
           'series_id_ssi' => format_id(attributes[:series_id]),
           'sub_series_title_ss' => attributes[:sub_series_title],
-          'sub_series_id_ssi' => format_id(attributes[:sub_series_id]),
+          'sub_series_id_ssi' => format_id(attributes[:sub_series_id])
         })
       end
 

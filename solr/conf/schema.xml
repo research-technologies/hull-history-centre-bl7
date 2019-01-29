@@ -210,10 +210,10 @@
   <copyField source="*_ssim" dest="all_text_timv" maxChars="3000"/>
   <copyField source="*_si" dest="all_text_timv" maxChars="3000"/>
 
-  <copyField source="*_tsim" dest="suggest"/>
-  <copyField source="*_tesim" dest="suggest"/>
-  <copyField source="*_ssim" dest="suggest"/>
-  <copyField source="*_si" dest="suggest"/>
+  <!--<copyField source="*_tsim" dest="suggest"/>-->
+  <!--<copyField source="*_tesim" dest="suggest"/>-->
+  <!--<copyField source="*_ssim" dest="suggest"/>-->
+  <!--<copyField source="*_si" dest="suggest"/>-->
 
   <!-- TODO: Look into if these are actually being used. -->
   <copyField source="*_tsim" dest="spell"/>
