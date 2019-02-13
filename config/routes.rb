@@ -6,14 +6,15 @@ Rails.application.routes.draw do
   mount Blacklight::Engine => '/'
   mount BlacklightAdvancedSearch::Engine => '/'
   
-  # from hhc start
   # Switch over to this when home page has been created
   root to: 'pages#home'
   # root :to => "catalogue#index"
 
+  # ERROR undefined method `blacklight_for'
+  # @todo check if this ALLOW DOTS contraint is needed
   # blacklight_for :catalogue, constraints: { id: ALLOW_DOTS }
 
-  resources :catalog, controller: 'catalog'
+  resources :catalog, controller: 'catalog', path: '/catalogue'
   
   # Add LB healthcheck page
   get 'healthcheck/rails-status' => 'pages#rails_status'
@@ -21,21 +22,15 @@ Rails.application.routes.draw do
   %w[home about contact cookies help].each do |page|
     get page, controller: 'pages', action: page
   end
-
-  # root to: "catalog#index"
-  
-  # from hhc end
-  
   concern :searchable, Blacklight::Routes::Searchable.new
 
-  resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
+  resource :catalogue, only: [:index], as: 'catalog', path: '/catalogue', controller: 'catalog' do
     concerns :searchable
     concerns :range_searchable
-
   end
   concern :exportable, Blacklight::Routes::Exportable.new
 
-  resources :solr_documents, only: [:show], path: '/catalog', controller: 'catalog' do
+  resources :solr_documents, only: [:show], path: '/catalogue', controller: 'catalog' do
     concerns :exportable
   end
 
