@@ -36,7 +36,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -73,10 +74,5 @@ gem 'jquery-rails'
 gem 'blacklight_range_limit'
 gem 'blacklight_advanced_search'
 # gem 'blacklight_google_analytics', git: 'https://github.com/uohull/blacklight_google_analytics', branch: 'master'
-
-group :development, :test do
-  gem 'byebug'
-  gem 'rspec-rails'
-end
 
 gem 'pg'

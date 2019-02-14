@@ -58,6 +58,8 @@ services:
     networks:
       internal:
 
+  ##
+  # Blacklight application
   app: &app
     build: 
       context: .
@@ -80,6 +82,6 @@ services:
       - db
       - solr
     expose:
-      - 3000
+      - 80
     ports:
-      - 3000:3000
+      - 80:${RAILS_PORT}
