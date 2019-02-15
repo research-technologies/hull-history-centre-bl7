@@ -1,10 +1,10 @@
 solr:
   development:
-    url: "http://hullculture.demos.leaf.ulcc.ac.uk:8983/solr/hyrax"
+    url: "http://127.0.0.1:8983/solr/hyrax-development"
   test:
     url: "http://127.0.0.1:8983/solr/hyrax-test"
   production:
-    url: "http://127.0.0.1:8983/solr/hyrax"
+    url: <%= ENV['HYRAX_SOLR_URL'] || "http://127.0.0.1:8983/solr/hyrax" %>
 hyrax:
   development:
     url: "http://127.0.0.1:3000"
