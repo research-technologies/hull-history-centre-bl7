@@ -41,7 +41,6 @@ RUN echo 'deb http://deb.debian.org/debian jessie-backports main' > /etc/apt/sou
 COPY Gemfile Gemfile.lock $APP_PRODUCTION
 
 # install gems to system - use flags dependent on RAILS_ENV
-RUN echo "$APP_PRODUCTION"
 RUN cd $APP_PRODUCTION && \
     if [ "$RAILS_ENV" = "production" ]; then \
             bundle install --without test:development; \
