@@ -6,6 +6,7 @@ mkdir -p $APP_WORKDIR/log
 if [ "$RAILS_ENV" = "production" ]; then
     # Verify all the production gems are installed
     bundle check
+    rake assets:precompile
 else
     # install any missing development gems (as we can tweak the development container without rebuilding it)
     bundle check || bundle install --without production

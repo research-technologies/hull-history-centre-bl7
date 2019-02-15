@@ -120,12 +120,12 @@ module Ead
     end
     
     def self.hyrax_solr
-      solr_url = YAML.load_file("#{Rails.root}/config/hyrax.yml")['solr'][Rails.env]['url']
+      solr_url = YAML.load(ERB.new(File.read("#{Rails.root}/config/hyrax.yml")).result)['solr'][Rails.env]['url']
       @hyrax_solr ||= RSolr.connect :url => solr_url
     end
     
     def self.hyrax_app
-      @hyrax_config = YAML.load_file("#{Rails.root}/config/hyrax.yml")['hyrax']
+      @hyrax_config = YAML.load(ERB.new(File.read("#{Rails.root}/config/hyrax.yml")).result)['hyrax']
       @hyrax_app ||= Faraday.new(url: @hyrax_config[Rails.env]['url']) do |faraday|
           faraday.adapter :net_http
           # @todo REMOVE ONCE SSL IN PLACE

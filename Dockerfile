@@ -1,7 +1,10 @@
 FROM ruby:2.6
 
 # Setup environment variables for use at build time only
-# ARG 
+ARG APP_PRODUCTION
+ARG APP_WORKDIR
+ARG SECRET_KEY_BASE
+ARG RAILS_ENV
 
 # Setup environment variables to pass to the applications
 ENV RAILS_ENV="$RAILS_ENV" \
@@ -9,8 +12,10 @@ ENV RAILS_ENV="$RAILS_ENV" \
     JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre \
     RAILS_LOG_TO_STDOUT=yes_please \
     BUNDLE_JOBS=2 \
-    APP_PRODUCTION=$APP_PRODUCTION/ \
-    APP_WORKDIR=$APP_WORKDIR/
+    APP_PRODUCTION="$APP_PRODUCTION"/ \
+    APP_WORKDIR="$APP_WORKDIR"/
+    
+ENV SECRET_KEY_BASE=$SECRET_KEY_BASE
 
 # Add backports to apt-get sources
 # Install libraries, dependencies, java
@@ -36,6 +41,7 @@ RUN echo 'deb http://deb.debian.org/debian jessie-backports main' > /etc/apt/sou
 COPY Gemfile Gemfile.lock $APP_PRODUCTION
 
 # install gems to system - use flags dependent on RAILS_ENV
+RUN echo "$APP_PRODUCTION"
 RUN cd $APP_PRODUCTION && \
     if [ "$RAILS_ENV" = "production" ]; then \
             bundle install --without test:development; \
@@ -60,7 +66,5 @@ RUN if [ "$RAILS_ENV" = "production" ]; then \
     fi
 
 WORKDIR $APP_WORKDIR
-
-ENV SECRET_KEY_BASE=$SECRET_KEY_BASE
 
 RUN chmod +x /bin/docker-entrypoint.sh
