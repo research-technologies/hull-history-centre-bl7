@@ -22,7 +22,7 @@ module Ead
           if attributes[:dao].present? && ead_class.clean_access_status(attributes['access']) == 'open'
             print_message "\nPulling information from Hyrax for #{attributes[:dao]}"
             update_hyrax_visiblity_for_item(attributes[:dao]) 
-            attributes = update_solr_docs_from_hyrax(attributes[:dao], attributes) 
+            attributes = update_solr_docs_from_hyrax(attributes[:dao], attributes)
           end
           @solr.add(ead_class.to_solr(attributes))
         end
@@ -89,7 +89,7 @@ module Ead
     def self.update_solr_docs_from_hyrax(dao_id, item_attributes)
       item_attributes = add_new_attributes(hyrax_solr.get('select', params: {
         q: '*:*', 
-        fq: "{!join from=file_set_ids_ssim to=id}id:#{dao_id}",
+        fq: ["{!join from=file_set_ids_ssim to=id}id:#{dao_id}", '!label_tesim:"metadata.json"'],
         fl: 'id,sip_file_name_tesim,mime_type_ssi,file_size_lts,all_text_ts',
         rows: 1000}), item_attributes)
     end
