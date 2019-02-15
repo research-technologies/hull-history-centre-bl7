@@ -11,7 +11,18 @@
                <% if ead_item_access_closed?(@document) %>
                  <p><%= t('blacklight.show.item_closed_access') %></p>
                 <% else %>
-                  <p><%= t('blacklight.show.item_open_access') %></p>
+                  <% if @document['dao_ssi'] %>
+                    <p><%= t('blacklight.show.item_open_online') %></p>
+                    <% if @document['file_set_ids_ssim'] %>
+                    <p><ul>
+                      <% @document['file_set_ids_ssim'].each do | fs | %>
+                        <li><%= fs %> (filename and link to download) </li>
+                      <% end %>
+                    </ul></p>
+                    <% end %>
+                  <% else %>
+                    <p><%= t('blacklight.show.item_open_access') %></p>
+                  <% end %>
                 <% end %>
             <% end %>
 

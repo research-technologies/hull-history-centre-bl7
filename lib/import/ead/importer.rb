@@ -79,8 +79,8 @@ module Ead
     
     def self.update_hyrax_visiblity_body
       {
-        'email' => @hyrax_config[Rails.env]['username'],
-        'password' => @hyrax_config[Rails.env]['password'],
+        'email' => hyrax_config['hyrax'][Rails.env]['username'],
+        'password' => hyrax_config['hyrax'][Rails.env]['password'],
         'visibility' => 'open',
         'cascade' => 'true'
       }
@@ -119,14 +119,18 @@ module Ead
       }
     end
     
+    def self.hyrax_config
+      @hyrax_config ||= YAML.load(ERB.new(File.read("#{Rails.root}/config/hyrax.yml")).result)
+      @hyrax_config
+    end
+    
     def self.hyrax_solr
-      solr_url = YAML.load(ERB.new(File.read("#{Rails.root}/config/hyrax.yml")).result)['solr'][Rails.env]['url']
+      solr_url = hyrax_config['solr'][Rails.env]['url']
       @hyrax_solr ||= RSolr.connect :url => solr_url
     end
     
     def self.hyrax_app
-      @hyrax_config = YAML.load(ERB.new(File.read("#{Rails.root}/config/hyrax.yml")).result)['hyrax']
-      @hyrax_app ||= Faraday.new(url: @hyrax_config[Rails.env]['url']) do |faraday|
+      @hyrax_app ||= Faraday.new(url: hyrax_config['hyrax'][Rails.env]['url']) do |faraday|
           faraday.adapter :net_http
           # @todo REMOVE ONCE SSL IN PLACE
           faraday.ssl[:verify] = false
