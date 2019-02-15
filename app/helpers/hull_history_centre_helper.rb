@@ -26,9 +26,6 @@ module HullHistoryCentreHelper
   end
 
   def isbn(document)
-    puts '-'*30
-    puts document
-    puts document['isbn_ssm']
     isbn = document['isbn_ssm'] #document.get("isbn_ssm", sep: nil) 
     isbn = isbn.nil? ? nil : isbn.first
   end
@@ -95,6 +92,19 @@ module HullHistoryCentreHelper
       filename = "#{id.downcase}.pdf"
       return link_to label, "/files/#{filename}"
     end
+  end
+  
+  def file_set_urls(document_id)
+    Blacklight.default_index.connection.get('select', params: {
+        q: '*:*', 
+        fq: "{!join from=file_set_ids_ssim to=id}id:\"#{document_id}\"",
+        fl: 'id,file_name_tesim,mime_type_ssi',
+        rows: 1000
+      })['response']['docs']
+  end
+  
+  def file_set_url(file_set_id)
+    "#{ENV['HYRAX_APP']}/downloads/#{file_set_id}"
   end
 
 end
