@@ -16,5 +16,5 @@ fi
 bundle exec rake db:migrate
 
 # echo "--------- Starting Blacklight in $RAILS_ENV mode ---------"
-rm -f /tmp/blacklight.pid
-bundle exec rails server -p 3000 -b '0.0.0.0' --pid /tmp/blacklight.pid
+rm -f /tmp/"$APP_KEY".pid
+bundle exec rails server -p "$RAILS_PORT" -b '0.0.0.0' --pid /tmp/"$APP_KEY".pid
