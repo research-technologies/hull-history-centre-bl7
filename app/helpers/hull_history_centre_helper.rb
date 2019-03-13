@@ -106,5 +106,17 @@ module HullHistoryCentreHelper
   def file_set_url(file_set_id)
     "#{ENV['HYRAX_APP']}/downloads/#{file_set_id}"
   end
+  
+  def manifest(dao_id)
+    "#{ENV['HYRAX_APP']}/concern/digital_archival_objects/#{dao_id}/manifest"
+  end
+  
+  def image?(mime_type)
+    image_mime_types.include?(mime_type)
+  end
+  
+  def image_mime_types
+    ['image/png', 'image/jpeg', 'image/jpg', 'image/jp2', 'image/bmp', 'image/gif', 'image/tiff']
+  end
 
 end

@@ -1,0 +1,10 @@
+<div id="content" class="col-md-12 well square-corners">
+  <a id="gotoviewer" />
+  <legend>
+    <h3>Viewer</h3>
+  </legend>
+  <%= PulUvRails::UniversalViewer.script_tag %>
+  <div class="viewer-wrapper">
+    <div class="uv viewer" data-uri="<%=manifest(@document['dao_ssi'])%>"></div>
+  </div>
+</div>

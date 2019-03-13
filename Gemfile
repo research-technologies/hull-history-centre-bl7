@@ -76,3 +76,6 @@ gem 'blacklight_advanced_search'
 # gem 'blacklight_google_analytics', git: 'https://github.com/uohull/blacklight_google_analytics', branch: 'master'
 
 gem 'pg'
+
+gem 'pul_uv_rails'
+gem 'iiif_manifest'

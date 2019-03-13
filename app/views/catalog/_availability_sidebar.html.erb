@@ -14,12 +14,22 @@
                   <% if @document['dao_ssi'] %>
                     <p><%= t('blacklight.show.item_open_online') %></p>
                     <% if @document['file_set_ids_ssim'] %>
-                    <p>Downloads:</p>
-                    <p><ul>
-                      <% file_set_urls(@document.id).each do | fs | %>
-                      <li><%= link_to fs['file_name_tesim'].first, file_set_url(fs['id']) %> (<%= fs['mime_type_ssi'] %>)</li>
+                      <% images = false %>
+                      <p>Downloads:</p>
+                      <p><ul>
+                        <% file_set_urls(@document.id).each do | fs | %>
+                          <% images = true if image?(fs['mime_type_ssi']) == true %>
+                          <li><%= link_to fs['file_name_tesim'].first, file_set_url(fs['id']) %> (<%= fs['mime_type_ssi'] %>)</li>
+                        <% end %>
+                      </ul>
+                      </p>
+                      <% if images == true %>
+                      <p>
+                        <a href='#gotoviewer'>
+                          <button type="submit" class="btn btn-primary">View Images</button>
+                        </a>
+                      </p>
                       <% end %>
-                    </ul></p>
                     <% end %>
                   <% else %>
                     <p><%= t('blacklight.show.item_open_access') %></p>

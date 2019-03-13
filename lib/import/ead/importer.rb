@@ -20,7 +20,7 @@ module Ead
         Array(objects[key]).each do |attributes|
           incoming_ids << attributes[:id]
           if attributes[:dao].present? && ead_class.clean_access_status(attributes['access']) == 'open'
-            print_message "\nPulling information from Hyrax for #{attributes[:dao]}"
+            print_message "\nRetrieving information from Hyrax for #{attributes[:dao]}"
             update_hyrax_visiblity_for_item(attributes[:dao]) 
             attributes = update_solr_docs_from_hyrax(attributes[:dao], attributes)
           end
@@ -90,7 +90,7 @@ module Ead
       item_attributes = add_new_attributes(hyrax_solr.get('select', params: {
         q: '*:*', 
         fq: ["{!join from=file_set_ids_ssim to=id}id:#{dao_id}", '!label_tesim:"metadata.json"'],
-        fl: 'id,sip_file_name_tesim,mime_type_ssi,file_size_lts,all_text_ts',
+        fl: 'id,sip_file_name_tesim,label_ssi,mime_type_ssi,file_size_lts,all_text_ts',
         rows: 1000}), item_attributes)
     end
     
@@ -112,11 +112,19 @@ module Ead
       {
         'type_ssi' => 'FileSet',
         'id' => attributes['id'],
-        'file_name_tesim' => attributes['sip_file_name_tesim'],
+        'file_name_tesim' => file_name(attributes),
         'file_size_lts' => attributes['file_size_lts'],
         'mime_type_ssi' => attributes['mime_type_ssi'],
         'in_reference_no_ssi' => item_id
       }
+    end
+    
+    def self.file_name(attributes)
+      if attributes['sip_file_name_tesim'].blank?
+        [attributes['label_ssi'].split('-').drop(5).join('-')]
+      else
+        attributes['sip_file_name_tesim']
+      end
     end
     
     def self.hyrax_config
