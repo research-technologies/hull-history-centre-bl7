@@ -5,10 +5,20 @@
 * cp config/secrets.yml.template config/secrets.yml
 * Edit secrets.yml and fill in values
 * rake db:migrate
-* rake jetty:unzip
-* rake configure\_jetty
-* rake jetty:start
+* solr_wrapper &
 * rails s
+* 
+
+# Environment Variables
+
+The following are required by the appliation if digital object metadata is being imported from Hyrax and Digital Archival Objects are being served from the application:
+
+```
+HYRAX_APP= # URL for the hyrax instance
+HYRAX_APP_USER= # hyrax admin user email
+HYRAX_APP_PASS= # hyrax admin user password
+HYRAX_SOLR_URL= # full solr url for the solr instance being used for hyrax
+```
 
 # Importing Records
 
