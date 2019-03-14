@@ -9,6 +9,7 @@ en:
         q: Search our catalogues
       filters:
         title: ''
+      online: 'Available Online'
 
     back_to_search: 'Back to search results'
 
