@@ -36,5 +36,4 @@
 
 // not needed? require 'site'
 
-// unused at the moment
-// require blacklight_google_analytics
+//= require blacklight_google_analytics

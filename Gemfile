@@ -73,9 +73,7 @@ gem 'jquery-rails'
 
 gem 'blacklight_range_limit'
 gem 'blacklight_advanced_search'
-# gem 'blacklight_google_analytics', git: 'https://github.com/uohull/blacklight_google_analytics', branch: 'master'
+gem 'blacklight_google_analytics', git: 'https://github.com/research-technologies/blacklight_google_analytics', branch: 'master'
 
-gem 'pg'
-
+gem 'pg' # used by docker
 gem 'pul_uv_rails'
-gem 'iiif_manifest'

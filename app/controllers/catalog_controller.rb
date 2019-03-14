@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 class CatalogController < ApplicationController
+  include BlacklightGoogleAnalytics::ControllerExtraHead
+
   
    before_action :show_tab, only: :show
 
   include BlacklightRangeLimit::ControllerOverride
   include BlacklightAdvancedSearch::Controller
-  # include BlacklightGoogleAnalytics::ControllerExtraHead
+  include BlacklightGoogleAnalytics::ControllerExtraHead
 
   include Blacklight::Catalog
   
