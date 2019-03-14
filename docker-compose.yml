@@ -81,6 +81,6 @@ services:
       - db
       - solr
     expose:
-      - ${EXPOSE_PORT}
+      - ${RAILS_PORT}
     ports:
-      - ${EXPOSE_PORT}:${RAILS_PORT}
+      - ${EXTERNAL_PORT}:${RAILS_PORT}
