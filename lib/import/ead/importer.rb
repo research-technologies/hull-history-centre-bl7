@@ -104,6 +104,8 @@ module Ead
           @solr.add(file_set(fs, item_attributes[:id]))
         end
         item_attributes[:file_set_ids] = solr_result['response']['docs'].collect {|f| f['id'] }
+        # Used for the availability facet
+        item_attributes[:online] ='Available Online' unless item_attributes[:file_set_ids].blank?
         item_attributes
       end
     end

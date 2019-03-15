@@ -55,6 +55,7 @@ module Ead
             'dao_ssi' => attributes[:dao],
             'all_text_timv' => attributes[:extracted_text],
             'file_set_ids_ssim' => attributes[:file_set_ids],
+            'online_ssi' => attributes[:online],
           }
         end
 

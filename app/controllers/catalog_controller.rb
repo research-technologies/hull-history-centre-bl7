@@ -71,6 +71,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'sub_collection_id_ssi', label: 'Subcollection', show: false, helper_method: :title_by_id
     config.add_facet_field 'series_id_ssi', label: 'Series', show: false, helper_method: :title_by_id
     config.add_facet_field 'sub_series_id_ssi', label: 'Subseries', show: false, helper_method: :title_by_id
+    config.add_facet_field 'online_ssi', label: 'Availability', collapse: true
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
