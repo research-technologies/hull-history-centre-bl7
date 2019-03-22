@@ -36,7 +36,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -65,16 +66,13 @@ group :development, :test do
 end
 
 gem 'rsolr', '>= 1.0', '< 3'
-gem 'bootstrap', '~> 4.0'
 gem 'popper_js'
 gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'jquery-rails'
 
 gem 'blacklight_range_limit'
 gem 'blacklight_advanced_search'
-# gem 'blacklight_google_analytics', git: 'https://github.com/uohull/blacklight_google_analytics', branch: 'master'
+gem 'blacklight_google_analytics', git: 'https://github.com/research-technologies/blacklight_google_analytics', branch: 'master'
 
-group :development, :test do
-  gem 'byebug'
-  gem 'rspec-rails'
-end
+gem 'pg' # used by docker
+gem 'pul_uv_rails'

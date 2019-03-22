@@ -1,0 +1,20 @@
+solr:
+  development:
+    url: <%= ENV['HYRAX_SOLR_URL'] || "http://127.0.0.1:8983/solr/hyrax" %>
+  test:
+    url: "http://127.0.0.1:8983/solr/hyrax-test"
+  production:
+    url: <%= ENV['HYRAX_SOLR_URL'] || "http://127.0.0.1:8983/solr/hyrax" %>
+hyrax:
+  development:
+    url: <%= ENV['HYRAX_APP'] || "http://127.0.0.1:3000" %>
+    username: <%= ENV['HYRAX_APP_USER'] || "production_user@example.com" %>
+    password: <%= ENV['HYRAX_APP_PASS'] || "production_user" %>
+  test:
+    url: "http://127.0.0.1:3000"
+    username: "test_user@example.com"
+    password: "test_user"
+  production:
+    url: <%= ENV['HYRAX_APP'] || "http://127.0.0.1:3000" %>
+    username: <%= ENV['HYRAX_APP_USER'] || "production_user@example.com" %>
+    password: <%= ENV['HYRAX_APP_PASS'] || "production_user" %>

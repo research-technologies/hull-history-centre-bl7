@@ -9,6 +9,7 @@ en:
         q: Search our catalogues
       filters:
         title: ''
+      online: 'Available Online'
 
     back_to_search: 'Back to search results'
 
@@ -16,6 +17,7 @@ en:
       availability_link: Check if this item can be borrowed
       child_items_link: Show items
       item_open_access: This item is reference only and can only be consulted in person at the Hull History Centre.
+      item_open_online: This item is available online.
       item_closed_access: This item is not currently available for consultation – please see the Access Conditions statement for more details.
 
   blacklight_advanced_search:

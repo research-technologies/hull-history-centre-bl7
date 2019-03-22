@@ -1,0 +1,23 @@
+.viewer-wrapper {
+  height: 500px;
+}
+
+.viewer {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+}
+
+.online {
+  background-color: $secondary-color;
+  border-radius: 3px;
+  padding: 5px;
+  margin-left: 3px;
+  font-size: .7em;
+  font-weight: bold;
+  color: white;
+}
+
+html {
+  scroll-behavior: smooth;
+}

@@ -1,24 +1,72 @@
-# README
+# Getting Started
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* git clone [this repo]
+* bundle install
+* cp config/secrets.yml.template config/secrets.yml
+* Edit secrets.yml and fill in values
+* rake db:migrate
+* solr_wrapper &
+* rails s
+* 
 
-Things you may want to cover:
+# Environment Variables
 
-* Ruby version
+The following are required by the appliation if digital object metadata is being imported from Hyrax and Digital Archival Objects are being served from the application:
 
-* System dependencies
+```
+HYRAX_APP= # URL for the hyrax instance
+HYRAX_APP_USER= # hyrax admin user email
+HYRAX_APP_PASS= # hyrax admin user password
+HYRAX_SOLR_URL= # full solr url for the solr instance being used for hyrax
+```
 
-* Configuration
+# Importing Records
 
-* Database creation
+Import all \*.xml files within a directory:
 
-* Database initialization
+```bash
+rake import:ead['path/to/your/ead/files']
+rake import:sirsi['path/to/your/sirsi/files']
+```
 
-* How to run the test suite
+Import specific EAD files:
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+rake import:ead['spec/fixtures/sample_ead_files/U_DDH.xml, spec/fixtures/sample_ead_files/U_DAR.xml']
+```
 
-* Deployment instructions
+Note that there is not a space between the rake task name and the square bracket that begins the arguments list, and that there are qutoes around the argument list.
 
-* ...
+
+## PDF files
+Collection records have an associated pdf file that contains the collection catalogue.  This is implemented by letting the web server server the files (e.g. webrick in development) and Apache http when deployed.  To add some sample pdfs to the public folder of the application: 
+
+```bash
+rake copy:pdf
+```
+
+## Deploying with Capistrano
+
+First, set up an ssh config entry with details about the server name used in the relevant config/deploy/[my-env].rb file.
+Next, connect to the server via ssh to test the config.
+Then you can deploy code and update the server with the command 
+```
+bundle exec cap [my-env] deploy
+```
+
+## Getting Started using docker
+
+Ensure you have docker and docker-compose. See [notes on installing docker](https://github.com/research-technologies/hull_synchronizer/wiki/Notes-on-installing-docker)
+
+To build and run the system in your local environment,
+
+Clone the repository
+```
+git clone https://github.com/research-technologies/hull-history-centre-bl7.git
+```
+
+Issue the docker-compose `up` command:
+```bash
+$ docker-compose up --build
+```
+You should see the app at localhost:3000

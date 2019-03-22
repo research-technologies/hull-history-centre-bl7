@@ -189,7 +189,7 @@
     <dynamicField name="*_llsim" type="location" stored="true" indexed="true" multiValued="true"/>
 
     <dynamicField name="*_srpt" type="location_rpt" stored="true" indexed="true" multiValued="true" />
-    <dynamicField name="*_bbox" type="bbox" stored="true" indexed="true" />
+    <!--<dynamicField name="*_bbox" type="bbox" stored="true" indexed="true" />-->
 
 
     <!-- suggest and spelling -->
@@ -198,10 +198,7 @@
 
     <!-- you must define copyField source and dest fields explicity or schemaBrowser doesn't work -->
     <field name="all_text_timv" type="text" stored="false" indexed="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
-
-
   </fields>
-
 
   <!-- Above, multiple source fields are copied to the [text] field.
       Another way to map multiple source fields to the same
@@ -213,10 +210,10 @@
   <copyField source="*_ssim" dest="all_text_timv" maxChars="3000"/>
   <copyField source="*_si" dest="all_text_timv" maxChars="3000"/>
 
-  <copyField source="*_tsim" dest="suggest"/>
-  <copyField source="*_tesim" dest="suggest"/>
-  <copyField source="*_ssim" dest="suggest"/>
-  <copyField source="*_si" dest="suggest"/>
+  <!--<copyField source="*_tsim" dest="suggest"/>-->
+  <!--<copyField source="*_tesim" dest="suggest"/>-->
+  <!--<copyField source="*_ssim" dest="suggest"/>-->
+  <!--<copyField source="*_si" dest="suggest"/>-->
 
   <!-- TODO: Look into if these are actually being used. -->
   <copyField source="*_tsim" dest="spell"/>
@@ -276,10 +273,10 @@
     <fieldType name="location_rpt" class="solr.SpatialRecursivePrefixTreeFieldType"
                geo="true" distErrPct="0.025" maxDistErr="0.001" distanceUnits="kilometers"/>
 
-    <field name="bbox" type="bbox" />
-    <fieldType name="bbox" class="solr.BBoxField"
-               geo="true" distanceUnits="kilometers" numberType="_bbox_coord" storeSubFields="false"/>
-    <fieldType name="_bbox_coord" class="solr.DoublePointField" docValues="true" stored="false"/>
+    <!--<field name="bbox" type="bbox" />-->
+    <!--<fieldType name="bbox" class="solr.BBoxField"-->
+    <!--           geo="true" distanceUnits="kilometers" numberType="_bbox_coord" storeSubFields="false"/>-->
+    <!--<fieldType name="_bbox_coord" class="solr.DoublePointField" docValues="true" stored="false"/>-->
 
     <fieldType name="text" class="solr.TextField" omitNorms="false">
       <analyzer>

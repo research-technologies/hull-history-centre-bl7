@@ -1,0 +1,86 @@
+version: '3'
+
+volumes:
+  solr:
+  db:
+  uploads:
+
+networks:
+  internal:
+
+services:
+  ##
+  # Solr index server
+  solr:
+    image: solr:7-alpine
+    expose:
+      - 8983
+    ports:
+      - 8983:8983
+    env_file:
+      - .env
+    healthcheck:
+      test:
+        - CMD
+        - wget
+        - "-O"
+        - "/dev/null"
+        - http://localhost:8983/solr/
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    networks:
+      internal:
+    volumes:
+      - ./solr/conf:/opt/solr/solr_conf
+      - solr:/opt/solr/server/solr/mycores
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - ${SOLR_CORE}
+      - /opt/solr/solr_conf
+      
+  ##
+  # Postgres database server
+  db: 
+    image: postgres:10-alpine
+    networks:
+      internal:
+    volumes:
+      - db:/var/lib/postgresql/data
+    env_file:
+      - .env
+    healthcheck:
+      test: "CMD echo 'SELECT 1' | POSTGRES_PASSWORD=${POSTGRES_PASSWORD} psql --host 127.0.0.1 --username #{POSTGRES_USER} --dbname #{POSTGRES_DB} --quiet --no-align --tuples-only"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    networks:
+      internal:
+
+  ##
+  # Blacklight application
+  app: &app
+    build: 
+      context: .
+      args:
+        - RAILS_ENV=${RAILS_ENV}
+        - APP_WORKDIR=${APP_WORKDIR}
+        - SECRET_KEY_BASE=${SECRET_KEY_BASE}
+    env_file:
+      - .env
+    volumes:
+      - uploads:/data/uploads
+    networks:
+      internal:
+
+  web:
+    <<: *app
+    command: bash -c "/bin/docker-entrypoint.sh"
+    depends_on:
+      - db
+      - solr
+    expose:
+      - ${RAILS_PORT}
+    ports:
+      - ${EXTERNAL_PORT}:${RAILS_PORT}
