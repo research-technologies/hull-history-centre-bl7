@@ -5,7 +5,7 @@
   </legend>
   <%= PulUvRails::UniversalViewer.script_tag %>
   <div class="viewer-wrapper">
-  <div class="uv viewer" data-uri="<%=manifest(@document['dao_ssi'])%>"></div>
+  <div class="uv viewer" data-uri="<%=manifest(@document['dao_ssi'])%>" data-config="<%= request&.base_url %>/uv_config.json"></div>
   </div>
 </div>
 

@@ -12,7 +12,7 @@ services:
   ##
   # Solr index server
   solr:
-    image: solr:6-alpine
+    image: solr:7-alpine
     expose:
       - 8983
     ports:
