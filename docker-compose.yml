@@ -43,7 +43,7 @@ services:
   ##
   # Postgres database server
   db: 
-    image: postgres:10-alpine
+    image: postgres:11-alpine
     networks:
       internal:
     volumes:
