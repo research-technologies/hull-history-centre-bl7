@@ -42,21 +42,21 @@ services:
       
   ##
   # Postgres database server
-  db: 
+  db:
     image: postgres:11-alpine
-    networks:
-      internal:
     volumes:
       - db:/var/lib/postgresql/data
     env_file:
       - .env
     healthcheck:
-      test: "CMD echo 'SELECT 1' | POSTGRES_PASSWORD=${POSTGRES_PASSWORD} psql --host 127.0.0.1 --username #{POSTGRES_USER} --dbname #{POSTGRES_DB} --quiet --no-align --tuples-only"
+      test: "CMD echo 'SELECT 1' | POSTGRES_PASSWORD=${POSTGRES_PASSWORD} psql --host 127.0.0.1 --username ${POSTGRES_USER} --dbname ${POSTGRES_DB} --quiet --no-align --tuples-only"
       interval: 30s
       timeout: 5s
       retries: 3
     networks:
       internal:
+    ports:
+      - ${POSTGRES_PORT}:${POSTGRES_PORT}
 
   ##
   # Blacklight application

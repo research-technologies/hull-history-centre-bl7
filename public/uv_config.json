@@ -5,7 +5,7 @@
     {
       "options":
       {
-        "shareEnabled": false,
+        "shareEnabled": true,
         "downloadEnabled": false
       }
     }
