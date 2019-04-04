@@ -2,23 +2,11 @@
 
 * git clone [this repo]
 * bundle install
-* cp config/secrets.yml.template config/secrets.yml
-* Edit secrets.yml and fill in values
+* setup the environment variables (as noted below) 
 * rake db:migrate
 * solr_wrapper &
 * rails s
-* 
 
-# Environment Variables
-
-The following are required by the appliation if digital object metadata is being imported from Hyrax and Digital Archival Objects are being served from the application:
-
-```
-HYRAX_APP= # URL for the hyrax instance
-HYRAX_APP_USER= # hyrax admin user email
-HYRAX_APP_PASS= # hyrax admin user password
-HYRAX_SOLR_URL= # full solr url for the solr instance being used for hyrax
-```
 
 # Importing Records
 
@@ -54,6 +42,29 @@ Then you can deploy code and update the server with the command
 bundle exec cap [my-env] deploy
 ```
 
+## Environment Variables
+
+ * The environment variables used by docker when running the containers and by the rails application should be in file named .env
+ * For docker, copy the file .env.template to .env and change / add the necessary information
+ * For running the application without docker, setup the ENVIRONMENT VARIABLES as you would normally do so (eg. .rbenv-vars)
+
+The following are required by the appliation if digital object metadata is being imported from Hyrax and Digital Archival Objects are being served from the application:
+
+```
+HYRAX_APP= # URL for the hyrax instance
+HYRAX_APP_USER= # hyrax admin user email
+HYRAX_APP_PASS= # hyrax admin user password
+HYRAX_SOLR_URL= # full solr url for the solr instance being used for hyrax
+```
+
+### Secrets
+
+Generate a new secret with:
+
+```
+rails secret
+```
+
 ## Getting Started using docker
 
 Ensure you have docker and docker-compose. See [notes on installing docker](https://github.com/research-technologies/hull_synchronizer/wiki/Notes-on-installing-docker)
@@ -69,4 +80,27 @@ Issue the docker-compose `up` command:
 ```bash
 $ docker-compose up --build
 ```
-You should see the app at localhost:3000
+You should see the rails app at localhost:3000 (if you set EXTERNAL_PORT to a different port, it will be running on that port)
+
+## Universal Viewer Configuration
+
+The file 'public/uv_config.json' is used to determine how the universal viewer is displayed.
+
+For example, the following config disables the download button, but leaves the share button enabled:
+
+```
+{
+  "modules":
+  {
+    "footerPanel":
+    {
+      "options":
+      {
+        "shareEnabled": true,
+        "downloadEnabled": false
+      }
+    }
+  }
+}
+```
+
