@@ -1,0 +1,16 @@
+{
+  "systemParams": "linux-x64-48",
+  "modulesFolders": [
+    "public/uv"
+  ],
+  "flags": [],
+  "linkedModules": [],
+  "topLevelPatterns": [
+    "universalviewer@^3.0.16"
+  ],
+  "lockfileEntries": {
+    "universalviewer@^3.0.16": "https://registry.yarnpkg.com/universalviewer/-/universalviewer-3.0.16.tgz#288d7dc50621af231678a2036a0204f626468e48"
+  },
+  "files": [],
+  "artifacts": {}
+}

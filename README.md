@@ -2,11 +2,27 @@
 
 * git clone [this repo]
 * bundle install
-* setup the environment variables (as noted below) 
+* cp config/secrets.yml.template config/secrets.yml
+* Edit secrets.yml and fill in values
 * rake db:migrate
 * solr_wrapper &
 * rails s
+* 
 
+<<<<<<<<< saved version
+
+=========
+# Environment Variables
+
+The following are required by the appliation if digital object metadata is being imported from Hyrax and Digital Archival Objects are being served from the application:
+
+```
+HYRAX_APP= # URL for the hyrax instance
+HYRAX_APP_USER= # hyrax admin user email
+HYRAX_APP_PASS= # hyrax admin user password
+HYRAX_SOLR_URL= # full solr url for the solr instance being used for hyrax
+```
+>>>>>>>>> local version
 
 # Importing Records
 
@@ -80,7 +96,25 @@ Issue the docker-compose `up` command:
 ```bash
 $ docker-compose up --build
 ```
+
+To build and run the system in your local environment,
+
+Clone the repository
+```
+git clone https://github.com/research-technologies/hull-history-centre-bl7.git
+```
+
+Issue the docker-compose `up` command:
+```bash
+$ docker-compose up --build
+```
 You should see the rails app at localhost:3000 (if you set EXTERNAL_PORT to a different port, it will be running on that port)
+
+## Universal Viewer
+
+Universal Viewer is installed in the public directory using yarn, by running `yarn run install-uv`
+
+The installed version is configured in `package.json` and the viewer uses public/uv.html within the viewer frame.
 
 ## Universal Viewer Configuration
 
