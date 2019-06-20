@@ -37,7 +37,7 @@ services:
     entrypoint:
       - docker-entrypoint.sh
       - solr-precreate
-      - ${SOLR_CORE}
+      - ${HHC_SOLR_CORE}
       - /opt/solr/solr_conf
       
   ##
@@ -48,6 +48,8 @@ services:
       - db:/var/lib/postgresql/data
     env_file:
       - .env
+    environment:
+      - POSTGRES_DB=${HHC_DB}
     healthcheck:
       test: "CMD echo 'SELECT 1' | POSTGRES_PASSWORD=${POSTGRES_PASSWORD} psql --host 127.0.0.1 --username ${POSTGRES_USER} --dbname ${POSTGRES_DB} --quiet --no-align --tuples-only"
       interval: 30s
