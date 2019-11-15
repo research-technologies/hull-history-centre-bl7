@@ -44,7 +44,7 @@ module Sirsi
           'title_tesim' => attributes[:title],
           'title_ssi' => Array(attributes[:title]).first,
           'display_title_ss' => display_title(attributes),
-          'format_ssi' => transformed_format(attributes[:format]),
+          'format_ssi' => transformed_format(attributes[:format].first),
           'subject_ssim' => attributes[:subject],
           'subject_tesim' => attributes[:subject],
           'personal_subject_ssim' => attributes[:subject_600],
