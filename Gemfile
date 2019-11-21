@@ -75,3 +75,5 @@ gem 'blacklight_advanced_search'
 gem 'blacklight_google_analytics', git: 'https://github.com/research-technologies/blacklight_google_analytics', branch: 'master'
 
 gem 'pg' # used by docker
+
+gem 'pul_uv_rails', '2.0.1'
