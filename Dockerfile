@@ -21,12 +21,31 @@ RUN apt-get update -qq \
     libpq-dev \
     libxml2-dev libxslt1-dev \
     bzip2 unzip xz-utils \
-    vim \
+    vim tree \
+    apache2 \
+    software-properties-common \
     git \
     # https://github.com/docker-library/ruby/issues/226
     && curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get install -y nodejs
 
 WORKDIR $APP_WORKDIR
+
+## install apache, certs and modules for proxy##
+COPY docker/ssl.conf /etc/apache2/conf-available/
+RUN a2enconf ssl
+
+COPY docker/hhc.conf /etc/apache2/sites-available/
+COPY docker/hhc_ssl.conf /etc/apache2/sites-available/
+
+#SSL will be started after we are up and certbot has done its thang (so just the 80 vhost for now)
+RUN a2ensite hullsync
+
+RUN a2enmod ssl
+RUN a2enmod headers
+RUN a2enmod rewrite
+RUN a2enmod proxy
+RUN a2enmod proxy_balancer
+RUN a2enmod proxy_http
 
 # copy gemfiles to production folder
 COPY Gemfile Gemfile.lock $APP_WORKDIR
