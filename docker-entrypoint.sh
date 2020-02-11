@@ -23,8 +23,8 @@ mkdir -p /var/www/acme-docroot/.well-known/acme-challenge
 ##########
 
 #put server name in apache conf
-sed -i "s/#SERVER_NAME#/$HHC_SERVER_NAME/" /etc/apache2/sites-available/hullsync.conf
-sed -i "s/#SERVER_NAME#/$HHC_SERVER_NAME/" /etc/apache2/sites-available/hullsync_ssl.conf
+sed -i "s/#SERVER_NAME#/$HHC_SERVER_NAME/" /etc/apache2/sites-available/hhc.conf
+sed -i "s/#SERVER_NAME#/$HHC_SERVER_NAME/" /etc/apache2/sites-available/hhc_ssl.conf
 
 echo "--------- Starting Apache -----------"
 service apache2 start
@@ -39,7 +39,7 @@ certbot certonly -n --cert-name base -d $HHC_SERVER_NAME
 cp $APP_WORKDIR/docker/00_apache2 /etc/letsencrypt/renewal-hooks/deploy/
 
 echo "--------- Restarting Apache with ssl ---------"
-a2ensite hullsync_ssl
+a2ensite hhc_ssl
 service apache2 reload
 service apache2 restart
 

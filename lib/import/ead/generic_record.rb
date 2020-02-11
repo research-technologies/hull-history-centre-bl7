@@ -29,7 +29,9 @@ module Ead
             dates_normal: 'did/unitdate/@normal',
             collection_id: "#{collection_xpath}/#{Ead::Collection.fields_map[:id]}",
             collection_title: "#{collection_xpath}/#{Ead::Collection.fields_map[:title]}",
-            dao: 'did/dao/@entityref'
+#            dao: 'did/dao/@entityref'
+            #according to ead exported from CLAM this is where we find the dao ref
+            dao: 'odd/daogrp/daoloc/@href'
           }
         end
 
