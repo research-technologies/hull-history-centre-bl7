@@ -90,6 +90,26 @@ $(document).scroll(function () {
 
 });
 
+$(document).ready(function(){
+  /* paging of long lists in availability side bar*/
+  $(".hhc_pager:gt(0)").hide();
+  for (var i=0; i < $(".hhc_pager").length; i++){
+    $(".hhc_index").append('<li class="hhc_ind hhc_page_'+i+' btn-primary">'+(parseInt(i)+1)+'</li>');
+  }
+  $(".hhc_ind").on("click", function(){
+    $(".hhc_pager").hide();
+    var show_this = $(".hhc_pager").get($(this).index());
+    $(show_this).show();
+  });
+  /* gotoviewer fix */
+  $("a[href='#gotoviewer']").click(function() {
+    $("html, body").animate({ scrollTop: $(document).height() });
+    return false;
+  });
+
+});
+
+
 // $(document).scroll(function () {
 // else {;
 //   $('#main-container').css("padding-top","0px");

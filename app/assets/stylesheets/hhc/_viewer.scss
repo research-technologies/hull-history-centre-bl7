@@ -6,7 +6,7 @@
 .viewer-wrapper iframe {
   height: 100%;
   width: 100%;
-  position: absolute;
+/*  position: absolute;*/
   top: 0;
   left: 0;
 }
@@ -30,4 +30,8 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+#universal_viewer #content { 
+  margin-bottom: 250px;
 }
