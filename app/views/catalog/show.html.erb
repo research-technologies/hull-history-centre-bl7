@@ -35,8 +35,16 @@
 
 </div>
 
-<!-- Check whether it has images attached -->
-<% if 'a' == 'a' %>
+<!-- Check whether it is an item and that it has images attached -->
+<% images = false %>
+<% urls = file_set_urls(@document.id) %>
+<% urls.each_with_index do | fs, index | %>
+<% images = true; break if image?(fs['mime_type_ssi']) == true %>
+<% end %>
+
+
+ <!-- Check whether it has images attached -->
+<% if is_collection == false && images == true %>
   <div id="universal_viewer">
   <%= render 'catalog/universal_viewer' %>
   </div>

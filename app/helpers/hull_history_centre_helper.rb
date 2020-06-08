@@ -95,12 +95,17 @@ module HullHistoryCentreHelper
   end
   
   def file_set_urls(document_id)
-    Blacklight.default_index.connection.get('select', params: {
+    result = Blacklight.default_index.connection.get('select', params: {
         q: '*:*', 
         fq: "{!join from=file_set_ids_ssim to=id}id:\"#{document_id}\"",
         fl: 'id,file_name_tesim,mime_type_ssi',
-        rows: 1000
+        rows: 1000,
       })['response']['docs']
+      #TODO workout how to sort this list with solr query
+      # adding param "sort: 'file_name_tesim'" breaks stuff
+      # Use ruby to sort for now
+      sorted = result.sort_by { |k| k["file_name_tesim"][0] }
+      return sorted
   end
   
   def file_set_url(file_set_id)
