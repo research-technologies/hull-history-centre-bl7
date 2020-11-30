@@ -1,11 +1,7 @@
-<div id="sidebar-nav" class="well square-corners">
   <ul class="nav nav-list">
     <li>
       <fieldset id="assets">
-        <legend>
-          <h3> Availability </h3>
-        </legend>
-        <div id="asset-list">
+          <div id="asset-list">
           <div class="clearfix">
             <% unless @document['type_ssi'] == 'library_record' %>
                <% if ead_item_access_closed?(@document) %>
@@ -14,20 +10,36 @@
                   <% if @document['dao_ssi'] %>
                     <p><%= t('blacklight.show.item_open_online') %></p>
                     <% if @document['file_set_ids_ssim'] %>
-                      <% images = false %>
+                      <%# I'm sure there's a better way to do this, but 
+                        paginate gems are all expecting proper records so 
+                      this will work for array of hashes passed back from 
+                      file_set_urls and with subsequent javascript %>
                       <% urls = file_set_urls(@document.id) %>
+                      <% @page_size = 15 %><span id="page_size" data-page-size="<%= @page_size %>"></span>
+                      <% @num_page_links_show = 5 %><span id="num_page_links_show" data-num-page-links-show="<%= @num_page_links_show %>"></span>
+                      <% @num_pages = (urls.length/@page_size.to_f).ceil %><span id="num_pages" data-num-pages="<%= @num_pages %>"></span>
                       <p>Downloads:</p>
-                      <% if urls.length > 10 %>
-                        <ul class="hhc_index"></ul>
+                      <% if urls.length > @page_size %>
+                        <ul class="hhc_index">
+                          <li class="btn hhc_ind hhc_page_-1 prev" data-index="-1">&lt;&lt;</li>
+                          <% [*0..@num_page_links_show-1].each do | i | %>
+                            <li class="btn btn-primary hhc_ind hhc_page_<%= i %>" data-index="<%= i %>"><%= i+1 %></li>
+                          <% end %>
+                          <li class="hhc_ind">...</li>
+                          <% [*@num_pages-@num_page_links_show..@num_pages-1].each do | i | %>
+                            <li class="btn btn-primary hhc_ind hhc_page_<%= i %>" data-index="<%= i %>"><%= i+1 %></li>
+                          <% end %>
+                          <li class="btn btn-primary hhc_ind hhc_page_1 next" data-index="1">&gt;&gt;</li>
+                        </ul>
+
                           <div class="hhc_pager">
                             <ul>
                             <% urls.each_with_index do | fs, index | %>
-                              <%# images = true if image?(fs['mime_type_ssi']) == true %>
                               <li><%= link_to fs['file_name_tesim'].first, file_set_url(fs['id']), "title" => fs['mime_type_ssi']  %> </li>
-                              <% if (index+1) % 10 == 0 %>
+                              <% if (index+1) % @page_size == 0 %>
                             </ul>
                             </div>
-                            <div class="hhc_pager">
+                            <div class="hhc_pager" style="display: none;">
                             <ul>
                               <% end %>
                             <% end %>
@@ -35,19 +47,17 @@
                           </div>
                       <% else %>
                           <ul>
+                           <div class="hhc_pager">
                             <% urls.each_with_index do | fs, index | %>
-                              <%# images = true if image?(fs['mime_type_ssi']) == true %>
                               <li><%= link_to fs['file_name_tesim'].first, file_set_url(fs['id']), "title" => fs['mime_type_ssi']  %> </li>
                             <% end %>
+                           </div>
                           </ul>
                       <% end %>
-                      <% if images == true %>
-                      <p>
-                        <a href="#gotoviewer">
-                          <button type="submit" class="btn btn-primary">View Images</button>
-                        </a>
-                      </p>
-                      <% end %>
+                       <% if urls.length > 0 %>
+                          <p>The files associated with this document can be downloaded using the links above. If possible certain files can be viewed directly using the tabs to the left if they appear</p>
+                           <ul>
+                       <% end %>
                     <% end %>
                   <% else %>
                     <p><%= t('blacklight.show.item_open_access') %></p>
@@ -68,4 +78,3 @@
       </fieldset>
     </li>
   </ul>
-</div>

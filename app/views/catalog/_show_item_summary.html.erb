@@ -1,0 +1,21 @@
+    <dl class="dl-vertical  dl-invert">
+
+      <% show_fields = [['reference_no_ssi', 'Reference No'],
+                        ['dates_ssim', 'Dates'],
+                        ['description_tesim', 'Description'],
+                        ['format_ssi', 'Format'],
+                        ['extent_ssm', 'Extent'],
+                        ['language_ssim', 'Language'],
+                        ['access_ssim', 'Access Conditions'],
+                        ['repository_ssi', 'Repository']] %>
+
+      <% show_fields.each do |(solr_doc_key, label)| %>
+        <%= show_attribute(document, solr_doc_key, label) %>
+      <% end %>
+
+      <dt> Collection: </dt>
+      <dd>
+        <%= link_to document[:collection_title_ss], catalog_path(document[:collection_id_ssi]) %>
+      </dd>
+    </dl>
+

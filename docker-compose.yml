@@ -2,7 +2,7 @@ version: '3'
 
 volumes:
   solr:
-  db:
+  postgresdb:
   uploads:
 
 networks:
@@ -42,10 +42,10 @@ services:
       
   ##
   # Postgres database server
-  db:
+  postgresdb:
     image: postgres:11-alpine
     volumes:
-      - db:/var/lib/postgresql/data
+      - postgresdb:/var/lib/postgresql/data
     env_file:
       - .env
     environment:
@@ -80,7 +80,7 @@ services:
     <<: *app
     command: bash -c "/bin/docker-entrypoint.sh"
     depends_on:
-      - db
+      - postgresdb
       - solr
     expose:
       - ${RAILS_PORT}

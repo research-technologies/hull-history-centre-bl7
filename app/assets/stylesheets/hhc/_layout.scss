@@ -196,19 +196,38 @@ section#content {
   margin: 2em 0;
 }
 
-/*Availability panel */
+/******** Added by RM *****/
+/* Availability panel */
 
 .hhc_index {
   margin-bottom: 5px;
+  padding-left: 0;
+  font-size: 0; /* don't change required for consistent spacing between pager buttons */
 }
 
 .hhc_index li {
-  display: inline;
-  padding: 2px 5px 2px;
+  display: inline-block;
+  width: 28px;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: bottom;
+  padding: 2px 2px 2px;
   margin: 1px;
   cursor: pointer;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
+
 .hhc_pager {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   word-wrap: break-word; 
 }
+
+.hhc_pager li {
+   margin-bottom: 0.3em;
+}
+
+

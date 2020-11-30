@@ -10,7 +10,8 @@
   <% show_availability = @document['type_ssi'] == 'library_record'  || @document['type_ssi'] == 'item'  || @document['type_ssi'] == 'piece' %>
   <% show_item = @document['type_ssi'] == 'subseries'  || @document['type_ssi'] == 'series'  || @document['type_ssi'] == 'subcollection' %>
 
-  <% document_col_class = is_collection ? 'col-md-12' : 'col-md-8' %>
+  <%# document_col_class = is_collection ? 'col-md-12' : 'col-md-8' %>
+  <% document_col_class = 'col-md-12' %>
   <div id="document" class="document <%= document_col_class %> <%= render_document_class %> container-fluid" itemscope itemtype="<%= @document.itemtype %>">
     <div id="doc_<%= @document.id.to_s.parameterize %>" class="row">
       <%= render_document_partials @document, blacklight_config.view_config(:show).partials %>
@@ -18,7 +19,7 @@
     
     
   </div>
-
+<!--
   <% if show_availability %>
     <div id="sidebar" class="col-md-4">
       <%= render 'catalog/availability_sidebar',
@@ -32,20 +33,7 @@
                   document: @document %>
     </div>
   <% end %>
-
+-->
 </div>
 
-<!-- Check whether it is an item and that it has images attached -->
-<% images = false %>
-<% urls = file_set_urls(@document.id) %>
-<% urls.each_with_index do | fs, index | %>
-<% images = true; break if image?(fs['mime_type_ssi']) == true %>
-<% end %>
 
-
- <!-- Check whether it has images attached -->
-<% if is_collection == false && images == true %>
-  <div id="universal_viewer">
-  <%= render 'catalog/universal_viewer' %>
-  </div>
-<% end %>

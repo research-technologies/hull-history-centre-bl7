@@ -1,33 +1,51 @@
 <%# A show view for a single Item -%>
 
 <div class="row">
+  <% @show_tab ||= 'summary' %>
 
-  <div class="col-sm-3">
-    <div class="cover-art">
-      <%= display_resource_thumbnail (document) %>
+  <div id="tab-sidebar" class="col-sm-2">
+
+    <%= display_resource_thumbnail (document) %>
+
+    <% menu_item_classes = 'tab-menu-item col-md-12' %>
+
+    <div class="tile-btn-fw-secondary">
+      <%= link_to 'Summary', catalog_path(document.id, tab: 'summary'), class: "#{tab_class('summary', @show_tab)} #{menu_item_classes}" %>
     </div>
+
+    <div class="tile-btn-fw-secondary">
+      <%= link_to 'Downloads', catalog_path(document.id, tab: 'downloads'), class: "#{tab_class('downloads', @show_tab)} #{menu_item_classes}", onclick: "setTimeout(init_downloads_list, 300);" %>
+    </div>
+
+    <% if contains?(:image,@document.id) %>
+    <div class="tile-btn-fw-secondary">
+      <%= link_to 'Images', catalog_path(document.id, tab: 'images'), class: "#{tab_class('images', @show_tab)} #{menu_item_classes}" %>
+    </div>
+    <% end %>
+<!--
+    <% if contains?(:pdf,@document.id) %>
+    <div class="tile-btn-fw-secondary">
+      <%= link_to 'Documents', catalog_path(document.id, tab: 'pdf'), class: "#{tab_class('pdf', @show_tab)} #{menu_item_classes}" %>
+    </div>
+    <% end %>
+
+    <% if contains?(:audio,@document.id) %>
+    <div class="tile-btn-fw-secondary">
+      <%= link_to 'Audio', catalog_path(document.id, tab: 'audio'), class: "#{tab_class('audio', @show_tab)} #{menu_item_classes}" %>
+    </div>
+    <% end %>
+
+    <% if contains?(:video,@document.id) %>
+    <div class="tile-btn-fw-secondary">
+      <%= link_to 'Video', catalog_path(document.id, tab: 'video'), class: "#{tab_class('video', @show_tab)} #{menu_item_classes}" %>
+    </div>
+    <% end %>
+-->
   </div>
 
-  <div class="col-sm-9">
-    <dl class="dl-vertical  dl-invert">
-
-      <% show_fields = [['reference_no_ssi', 'Reference No'],
-                        ['dates_ssim', 'Dates'],
-                        ['description_tesim', 'Description'],
-                        ['format_ssi', 'Format'],
-                        ['extent_ssm', 'Extent'],
-                        ['language_ssim', 'Language'],
-                        ['access_ssim', 'Access Conditions'],
-                        ['repository_ssi', 'Repository']] %>
-
-      <% show_fields.each do |(solr_doc_key, label)| %>
-        <%= show_attribute(document, solr_doc_key, label) %>
-      <% end %>
-
-      <dt> Collection: </dt>
-      <dd>
-        <%= link_to document[:collection_title_ss], catalog_path(document[:collection_id_ssi]) %>
-      </dd>
-    </dl>
+  <div id="tab-content" class="col-sm-10">
+    <%= render "catalog/show_item_#{@show_tab}", document: document %>
   </div>
+
+
 </div>

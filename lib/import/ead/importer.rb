@@ -105,6 +105,7 @@ module Ead
         end
         item_attributes[:file_set_ids] = solr_result['response']['docs'].collect {|f| f['id'] }
         # Used for the availability facet
+        item_attributes[:online] ='Not Available Online'
         item_attributes[:online] ='Available Online' unless item_attributes[:file_set_ids].blank?
         item_attributes
       end

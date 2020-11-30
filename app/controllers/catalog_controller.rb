@@ -156,7 +156,7 @@ class CatalogController < ApplicationController
         :query_parser => 'edismax',
         :url_key => 'advanced',
         :form_solr_parameters => {
-          'facet.field' => ['format_ssi', 'repository_ssi', 'subject_ssim', 'author_ssim'],
+          'facet.field' => ['format_ssi', 'repository_ssi', 'subject_ssim', 'author_ssim', 'online_ssi'],
         }
       }
 

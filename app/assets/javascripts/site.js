@@ -92,15 +92,8 @@ $(document).scroll(function () {
 
 $(document).ready(function(){
   /* paging of long lists in availability side bar*/
-  $(".hhc_pager:gt(0)").hide();
-  for (var i=0; i < $(".hhc_pager").length; i++){
-    $(".hhc_index").append('<li class="hhc_ind hhc_page_'+i+' btn-primary">'+(parseInt(i)+1)+'</li>');
-  }
-  $(".hhc_ind").on("click", function(){
-    $(".hhc_pager").hide();
-    var show_this = $(".hhc_pager").get($(this).index());
-    $(show_this).show();
-  });
+  init_downloads_list();
+
   /* gotoviewer fix */
   $("a[href='#gotoviewer']").click(function() {
     $("html, body").animate({ scrollTop: $(document).height() });
@@ -109,6 +102,93 @@ $(document).ready(function(){
 
 });
 
+function init_downloads_list(){
+
+  //Math.ceil($(".hhc_pager li").length/10);
+  ///$(".hhc_pager:gt(0)").hide();
+	//  render_index(num_pages,0);
+  $(".hhc_index").on("click", ".hhc_ind", function(){
+    if($(this).hasClass("disabled")){return false;}
+    $(".hhc_pager").hide();
+    $($(".hhc_pager").get($(this).data("index"))).show();
+//    var show_this = $(".hhc_pager").get($(this).data("index"));
+ //   $(show_this).show();
+    render_index(parseInt($(this).data("index")));
+  });
+
+}
+
+function render_index(current_ind){
+  $(".hhc_index").empty();
+
+  num_files=$("#num_files").data("num-files");
+  num_pages=$("#num_pages").data("num-pages");
+  page_size=$("#page_size").data("page-size");
+  num_page_links_show=$("#num_page_links_show").data("num-page-links-show");
+  console.log("num_pages: ",num_pages);
+  console.log("num_page_links_show: ",num_page_links_show);
+  console.log("num_files", num_files);
+  console.log("page_size", page_size);
+
+
+  if(num_pages > num_page_links_show){
+    start_page = (current_ind-Math.floor(num_page_links_show/2));
+
+    $(".hhc_index").append('<li class="btn hhc_ind hhc_page_'+(current_ind-1)+' prev" data-index="'+(current_ind-1)+'">&lt;&lt;</li>');
+
+    console.log(current_ind," > (",num_pages,"-",num_page_links_show,")");
+    console.log(current_ind," > ",(num_pages-num_page_links_show));
+
+
+    if(start_page > (num_pages-(num_page_links_show*2)) && start_page <= (num_pages-(num_page_links_show))){
+       start_page = num_pages-(num_page_links_show*2);
+    }
+    // at this point we move to the right hand page links and set the left hand ones back to 1
+    if(current_ind >= (num_pages-num_page_links_show)){
+       start_page = 0;
+    }
+    if(start_page < 0 ){
+       start_page = 0;
+    }
+    if(current_ind > 0){
+      $(".hhc_index .prev").removeClass('disabled').addClass("btn-primary");
+    }
+
+    for (var i=start_page; i < (start_page+num_page_links_show); i++){
+      if(i==current_ind){
+        $(".hhc_index").append('<li class="btn btn-primary btn-success hhc_ind hhc_page_'+i+'" data-index="'+i+'">'+(parseInt(i)+1)+'</li>');
+      }else{
+        $(".hhc_index").append('<li class="btn btn-primary hhc_ind hhc_page_'+i+'" data-index="'+i+'">'+(parseInt(i)+1)+'</li>');
+      }
+    }
+    $(".hhc_index").append('<li class="hhc_ind">...</li>');
+//    <% [*@num_pages-@num_page_links_show..@num_pages-1].each do | i | %>
+
+   for (var i=(num_pages-num_page_links_show); i < (num_pages); i++){
+      if(i==current_ind){
+        $(".hhc_index").append('<li class="btn btn-primary btn-success hhc_ind hhc_page_'+i+'" data-index="'+i+'">'+(parseInt(i)+1)+'</li>');
+      }else{
+        $(".hhc_index").append('<li class="btn btn-primary hhc_ind hhc_page_'+i+' btn-primary" data-index="'+i+'">'+(parseInt(i)+1)+'</li>');
+      }
+    }
+  }else{
+    if(current_ind == 0){
+      $(".hhc_index .prev").addClass('disabled').removeClass("btn-primary");
+    }
+    for (var i=start_page; i < (num_pages-1); i++){
+      if(i==current_ind){
+        $(".hhc_index").append('<li class="btn btn-primary btn-success hhc_ind hhc_page_'+i+'" data-index="'+i+'">'+(parseInt(i)+1)+'</li>');
+      }else{
+        $(".hhc_index").append('<li class="btn btn-primary hhc_ind hhc_page_'+i+'" data-index="'+i+'">'+(parseInt(i)+1)+'</li>');
+      }
+    }
+  }
+  $(".hhc_index").append('<li class="btn btn-primary hhc_ind hhc_page_'+(current_ind+1)+' next" data-index="'+(current_ind+1)+'">&gt;&gt;</li>');
+  if(current_ind == (num_pages-1)){
+      $(".hhc_index .next").addClass('disabled').removeClass("btn-primary");
+    }
+
+}
 
 // $(document).scroll(function () {
 // else {;

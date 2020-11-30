@@ -18,15 +18,22 @@ ENV SECRET_KEY_BASE=$SECRET_KEY_BASE
 # Install libraries, dependencies, java
 RUN apt-get update -qq \
     && apt-get install -y --no-install-recommends \
-    libpq-dev \
-    libxml2-dev libxslt1-dev \
-    bzip2 unzip xz-utils \
-    vim tree \
     apache2 \
-    software-properties-common \
+    bzip2 \
+    certbot \
     git \
+    libpq-dev \
+    libxml2-dev \
+    libxslt1-dev \
+    python-certbot-apache \
+    tree \
+    unzip \
+    vim \
+    xz-utils \
     # https://github.com/docker-library/ruby/issues/226
     && curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get install -y nodejs
+
+#    software-properties-common \
 
 WORKDIR $APP_WORKDIR
 

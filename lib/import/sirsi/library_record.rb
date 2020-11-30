@@ -44,7 +44,7 @@ module Sirsi
           'title_tesim' => attributes[:title],
           'title_ssi' => Array(attributes[:title]).first,
           'display_title_ss' => display_title(attributes),
-          'format_ssi' => transformed_format(attributes[:format].first),
+          'format_ssi' => transformed_format(Array(attributes[:format]).first),
           'subject_ssim' => attributes[:subject],
           'subject_tesim' => attributes[:subject],
           'personal_subject_ssim' => attributes[:subject_600],
@@ -62,7 +62,8 @@ module Sirsi
           'date_ssi' => sortable_date(attributes[:dates]),
           'physical_description_ssm' => attributes[:physical_desc],
           'notes_ssm' => attributes[:notes],
-          'isbn_ssm' => attributes[:isbn]
+          'isbn_ssm' => attributes[:isbn],
+          'online_ssi' => 'Not Available Online'
         }
       end
 
@@ -97,13 +98,17 @@ module Sirsi
           "CNFHBK" => 'Book',
           "CNFPBK" => 'Book',
           "LARGEPRINT" => 'Book',
+          "LPTHBK" => 'Book',
+          "LPTPBK" => 'Book',
           "MAGAZINE" => 'Book',
           "PICBK" => 'Book',
           "TEENFPBK" => 'Book',
+          "TEENNFPBK" => 'Book',
 
           "AFCAS" => 'Cassette',
           "ANFCAS" => 'Cassette',
           "TKBKADCAS" => 'Cassette',
+          "CHTKBKCAS" => 'Cassette',
 
           "CD" => 'CD/DVD',
           "CDROM" => 'CD/DVD',

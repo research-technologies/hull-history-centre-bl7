@@ -1,3 +1,9 @@
+require "kaminari"
+#Class User < ActiveRecord::Base
+#   paginates_per 50
+#end
+
+
 module HullHistoryCentreHelper
 
   ##############################################
@@ -105,23 +111,37 @@ module HullHistoryCentreHelper
       # adding param "sort: 'file_name_tesim'" breaks stuff
       # Use ruby to sort for now
       sorted = result.sort_by { |k| k["file_name_tesim"][0] }
-      return sorted
   end
-  
+
   def file_set_url(file_set_id)
-    "#{ENV['HYRAX_APP']}/downloads/#{file_set_id}"
+    "https://#{ENV['HYRAX_SERVER_NAME']}/downloads/#{file_set_id}"
   end
   
   def manifest(dao_id)
-    "#{ENV['HYRAX_APP']}/concern/digital_archival_objects/#{dao_id}/manifest"
+    "https://#{ENV['HYRAX_SERVER_NAME']}/concern/digital_archival_objects/#{dao_id}/manifest"
   end
   
-  def image?(mime_type)
-    image_mime_types.include?(mime_type)
+  def contains?(type,document_id)
+     files=file_set_urls(document_id)
+     m=mime_types
+     Rails.logger.warn(m)
+     files.each do |f|
+       if m[type].include?(f['mime_type_ssi'])
+         return true
+       end
+     end
+     return false
   end
-  
-  def image_mime_types
-    ['image/png', 'image/jpeg', 'image/jpg', 'image/jp2', 'image/bmp', 'image/gif', 'image/tiff']
+
+#  def image?(mime_type)
+#    image_mime_types.include?(mime_type)
+#  end
+
+  def mime_types
+    {image: ['image/png', 'image/jpeg', 'image/jpg', 'image/jp2', 'image/bmp', 'image/gif', 'image/tiff'],
+     pdf: ['application/pdf', 'application/x-pdf'],
+     audio: ['audio/mpeg', 'audio/mp4', 'audio/x-aiff', 'audio/ogg', 'audio/vorbis', 'audio/vnd.wav'],
+     video: ['video/mp4', 'video/quicktime', 'video/x-msvideo', 'video/x-ms-wmv']}
   end
 
 end
