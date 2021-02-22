@@ -6,6 +6,6 @@
     "install-uv": "yarn install --modules-folder ./public/uv"
   },
   "dependencies": {
-    "universalviewer": "^3.0.16"
+    "universalviewer": "^3.1.1"
   }
 }

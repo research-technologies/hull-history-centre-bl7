@@ -1,4 +1,3 @@
-  <%= PulUvRails::UniversalViewer.script_tag %>
   <div class="viewer-wrapper">
     <iframe
       src="<%= request&.base_url %>/uv.html#?manifest=<%= manifest(@document['dao_ssi'])%>&config=<%= request&.base_url %>/uv_config.json" 

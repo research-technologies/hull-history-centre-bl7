@@ -76,4 +76,4 @@ gem 'blacklight_google_analytics', git: 'https://github.com/research-technologie
 
 gem 'pg' # used by docker
 
-gem 'pul_uv_rails', '2.0.1'
+#gem 'pul_uv_rails', '2.0.1'
