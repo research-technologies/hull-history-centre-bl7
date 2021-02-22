@@ -113,12 +113,13 @@ module HullHistoryCentreHelper
       sorted = result.sort_by { |k| k["file_name_tesim"][0] }
   end
 
+  # SERVER_NAME is the env var for the HYRAX server associated with the synchroniser system
   def file_set_url(file_set_id)
-    "https://#{ENV['HYRAX_SERVER_NAME']}/downloads/#{file_set_id}"
+    "https://#{ENV['SERVER_NAME']}/downloads/#{file_set_id}"
   end
   
   def manifest(dao_id)
-    "https://#{ENV['HYRAX_SERVER_NAME']}/concern/digital_archival_objects/#{dao_id}/manifest"
+    "http://#{ENV['SERVER_NAME']}/concern/digital_archival_objects/#{dao_id}/manifest"
   end
   
   def contains?(type,document_id)

@@ -22,7 +22,6 @@
       <%= link_to 'Images', catalog_path(document.id, tab: 'images'), class: "#{tab_class('images', @show_tab)} #{menu_item_classes}" %>
     </div>
     <% end %>
-<!--
     <% if contains?(:pdf,@document.id) %>
     <div class="tile-btn-fw-secondary">
       <%= link_to 'Documents', catalog_path(document.id, tab: 'pdf'), class: "#{tab_class('pdf', @show_tab)} #{menu_item_classes}" %>
@@ -40,7 +39,6 @@
       <%= link_to 'Video', catalog_path(document.id, tab: 'video'), class: "#{tab_class('video', @show_tab)} #{menu_item_classes}" %>
     </div>
     <% end %>
--->
   </div>
 
   <div id="tab-content" class="col-sm-10">

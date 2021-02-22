@@ -30,8 +30,7 @@ if [ -z "$DOCKER_UP_BUILD"  ]; then
                 mkdir -p /var/www/acme-docroot/.well-known/acme-challenge
 
                 # We'll register each time as certs are not stored on a persistent volume
-                certbot register
-		certbot certonly -n --cert-name base -d $HHC_SERVER_NAME
+		certbot certonly -n --webroot -w /var/www/acme-docroot --cert-name base -d $HHC_SERVER_NAME
 
                 # copy autorenewal script. Dest directory only exists after the first cert is in place
         fi

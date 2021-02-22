@@ -46,6 +46,7 @@ COPY docker/hhc_ssl.conf /etc/apache2/sites-available/
 
 #SSL will be started after we are up and certbot has done its thang (so just the 80 vhost for now)
 RUN a2ensite hhc
+RUN a2dissite 000-default
 
 RUN a2enmod ssl
 RUN a2enmod headers

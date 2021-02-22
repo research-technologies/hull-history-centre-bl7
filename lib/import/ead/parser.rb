@@ -14,6 +14,8 @@ module Ead
         pieces = parse_records(doc, Ead::Piece)
         series = parse_records(doc, Ead::Series)
         sub_series = parse_records(doc, Ead::SubSeries)
+        # TODO sub_sub_series (for historical records)
+        # TODO section (for historical record)
 
         if collections.empty? && items.empty? && pieces.empty?
           raise "No records found.  Please check that you have valid XML."

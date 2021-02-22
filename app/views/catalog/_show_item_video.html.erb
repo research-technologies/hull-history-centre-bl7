@@ -1,7 +1,7 @@
   <%= PulUvRails::UniversalViewer.script_tag %>
   <div class="viewer-wrapper">
     <iframe
-      src="<%= request&.base_url %>/uv.html#?manifest=http://wellcomelibrary.org/iiif/b20605055/manifest&config=<%= request&.base_url %>/uv_config.json" 
+      src="<%= request&.base_url %>/uv.html#?manifest=<%= manifest(@document['dao_ssi'])%>&config=<%= request&.base_url %>/uv_config.json" 
       allowfullscreen="true" 
       frameborder="0" 
     ></iframe>
