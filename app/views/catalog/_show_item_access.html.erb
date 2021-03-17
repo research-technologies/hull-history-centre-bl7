@@ -1,0 +1,17 @@
+  <% is_collection = @document['type_ssi'] == 'collection' %>
+  <% show_availability = @document['type_ssi'] == 'library_record'  || @document['type_ssi'] == 'item'  || @document['type_ssi'] == 'piece' %>
+  <% show_item = @document['type_ssi'] == 'subseries'  || @document['type_ssi'] == 'series'  || @document['type_ssi'] == 'subcollection' %>
+
+  <% if show_availability %>
+    <div id="sidebar" class="col-md-4">
+      <%= render 'catalog/availability',
+                  document: @document %>
+    </div>
+  <% end %>
+
+  <% if show_item %>
+    <div id="sidebar" class="col-md-4">
+      <%= render 'catalog/sub_items',
+                  document: @document %>
+    </div>
+  <% end %>

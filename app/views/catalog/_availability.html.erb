@@ -1,6 +1,3 @@
-<div id="sidebar-nav" class="well square-corners">
-  <ul class="nav nav-list">
-    <li>
       <fieldset id="assets">
         <legend>
           <h3> Availability </h3>
@@ -11,7 +8,7 @@
                <% if ead_item_access_closed?(@document) %>
                  <p><%= t('blacklight.show.item_closed_access') %></p>
                 <% else %>
-                  <% if @document['dao_ssi'] %>
+                  <% if @document['dao_ssi'] and @document['dao_ssi'] != '' %>
                     <p><%= t('blacklight.show.item_open_online') %></p>
                     <% if @document['file_set_ids_ssim'] %>
                       <% images = false %>
@@ -66,6 +63,3 @@
           </div>
         </div>
       </fieldset>
-    </li>
-  </ul>
-</div>

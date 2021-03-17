@@ -14,7 +14,7 @@
     </div>
 
     <div class="tile-btn-fw-secondary">
-      <%= link_to 'Downloads', catalog_path(document.id, tab: 'downloads'), class: "#{tab_class('downloads', @show_tab)} #{menu_item_classes}", onclick: "setTimeout(init_downloads_list, 300);" %>
+      <%= link_to 'Access', catalog_path(document.id, tab: 'access'), class: "#{tab_class('access', @show_tab)} #{menu_item_classes}", onclick: "setTimeout(init_downloads_list, 300);" %>
     </div>
 
     <% if contains?(:image,@document.id) %>
