@@ -44,6 +44,14 @@ RUN a2enconf ssl
 COPY docker/hhc.conf /etc/apache2/sites-available/
 COPY docker/hhc_ssl.conf /etc/apache2/sites-available/
 
+#in case we are generating self-signed certs for a docker only instance
+COPY docker/gen_cert.sh /bin/
+RUN chmod +x /bin/gen_cert.sh
+
+# For later use by certbot/cron
+COPY docker/renew_cert /var/tmp/
+RUN chmod +x /var/tmp/renew_cert
+
 #SSL will be started after we are up and certbot has done its thang (so just the 80 vhost for now)
 RUN a2ensite hhc
 RUN a2dissite 000-default

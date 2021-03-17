@@ -1,0 +1,3 @@
+#!/bin/bash
+
+certbot -n certonly --cert-name #HHC_SERVER_NAME# -d #HHC_SERVER_NAME# --webroot -w /var/www/acme-docroot --agree-tos --email #ADMIN_EMAIL# --post-hook="/usr/sbin/service apache2 reload"
