@@ -19,6 +19,8 @@ en:
       item_open_access: This item is reference only and can only be consulted in person at the Hull History Centre.
       item_open_online: This item is available online.
       item_closed_access: This item is not currently available for consultation – please see the Access Conditions statement for more details.
+      item_has_embeds: 'As well as the downloads some files in this record can be viewed directly using the tabs on the left or the buttons below:'
+      downloads_title: 'Downloads:'
 
   blacklight_advanced_search:
     all: all

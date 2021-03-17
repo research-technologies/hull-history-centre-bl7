@@ -103,10 +103,10 @@ $(document).ready(function(){
 });
 
 function init_downloads_list(){
-
+console.log("init downloads list called");
   //Math.ceil($(".hhc_pager li").length/10);
   ///$(".hhc_pager:gt(0)").hide();
-	//  render_index(num_pages,0);
+  render_index(num_pages,0);
   $(".hhc_index").on("click", ".hhc_ind", function(){
     if($(this).hasClass("disabled")){return false;}
     $(".hhc_pager").hide();
@@ -119,16 +119,17 @@ function init_downloads_list(){
 }
 
 function render_index(current_ind){
+
   $(".hhc_index").empty();
 
   num_files=$("#num_files").data("num-files");
   num_pages=$("#num_pages").data("num-pages");
   page_size=$("#page_size").data("page-size");
   num_page_links_show=$("#num_page_links_show").data("num-page-links-show");
-  console.log("num_pages: ",num_pages);
-  console.log("num_page_links_show: ",num_page_links_show);
-  console.log("num_files", num_files);
-  console.log("page_size", page_size);
+//  console.log("num_pages: ",num_pages);
+//  console.log("num_page_links_show: ",num_page_links_show);
+//  console.log("num_files", num_files);
+//  console.log("page_size", page_size);
 
 
   if(num_pages > num_page_links_show){
@@ -171,11 +172,19 @@ function render_index(current_ind){
         $(".hhc_index").append('<li class="btn btn-primary hhc_ind hhc_page_'+i+' btn-primary" data-index="'+i+'">'+(parseInt(i)+1)+'</li>');
       }
     }
+  $(".hhc_index").append('<li class="btn btn-primary hhc_ind hhc_page_'+(current_ind+1)+' next" data-index="'+(current_ind+1)+'">&gt;&gt;</li>');
+  if(current_ind == (num_pages-1)){
+      $(".hhc_index .next").addClass('disabled').removeClass("btn-primary");
+    }
+
   }else{
+    start_page = 0;
     if(current_ind == 0){
       $(".hhc_index .prev").addClass('disabled').removeClass("btn-primary");
     }
-    for (var i=start_page; i < (num_pages-1); i++){
+
+    for (var i=start_page; i < num_pages; i++){
+      console.log("page: ",(parseInt(i)+1));
       if(i==current_ind){
         $(".hhc_index").append('<li class="btn btn-primary btn-success hhc_ind hhc_page_'+i+'" data-index="'+i+'">'+(parseInt(i)+1)+'</li>');
       }else{
@@ -183,10 +192,6 @@ function render_index(current_ind){
       }
     }
   }
-  $(".hhc_index").append('<li class="btn btn-primary hhc_ind hhc_page_'+(current_ind+1)+' next" data-index="'+(current_ind+1)+'">&gt;&gt;</li>');
-  if(current_ind == (num_pages-1)){
-      $(".hhc_index .next").addClass('disabled').removeClass("btn-primary");
-    }
 
 }
 
