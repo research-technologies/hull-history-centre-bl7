@@ -17,5 +17,21 @@ module Sirsi
       errors << filename + ': ' + e.message
     end
 
+    def self.check_file_data(filename)
+      objects = Sirsi::Parser.parse(filename)
+      errors=[]
+      counts = {}
+
+      Array(objects[:library_records]).each do |attributes|
+         if counts[attributes[:format]].nil? 
+             counts[attributes[:format]] =0
+         end
+         counts[attributes[:format]]+=1
+      end
+      counts
+    rescue => e
+      print_message(" ERROR: Check Aborted")
+      errors << filename + ': ' + e.message
+    end
   end
 end

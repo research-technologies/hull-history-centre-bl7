@@ -16,8 +16,8 @@ mkdir -p $APP_WORKDIR/log
 ##########
 
 #put server name in apache conf
-sed -i "s/#HHC_SERVER_NAME#/$HHC_SERVER_NAME/" /etc/apache2/sites-available/hhc.conf
-sed -i "s/#HHC_SERVER_NAME#/$HHC_SERVER_NAME/" /etc/apache2/sites-available/hhc_ssl.conf
+sed -i "s/#HHC_SERVER_NAME#/$HHC_SERVER_NAME/g" /etc/apache2/sites-available/hhc.conf
+sed -i "s/#HHC_SERVER_NAME#/$HHC_SERVER_NAME/g" /etc/apache2/sites-available/hhc_ssl.conf
 
 # For now $USE_SS_CERT will control whether or not to use a self-signed certificate or get one from letsencrypt
 # letsenrypt won't work with IPs, or with domainnames without dots in then (eg localhost) or from behind a firewall even if we give the NSG the acme :@ (!!)
@@ -42,10 +42,10 @@ else
   # If not...
   if [ ! -f /etc/ssl/certs/$HHC_SERVER_NAME.crt ]; then
     # Lets encrypt has a cert but for some reason this has not been copied to where apache wants them
-    if [ -f /etc/letsencrypt/live/base/fullchain.pem ]; then
+    if [ -f /etc/letsencrypt/live/$HHC_SERVER_NAME/fullchain.pem ]; then
       echo -e "Linking existing cert/key to /etc/ssl" 
-      ln -s /etc/letsencrypt/live/base/fullchain.pem /etc/ssl/certs/$HHC_SERVER_NAME.crt
-      ln -s /etc/letsencrypt/live/base/privkey.pem /etc/ssl/private/$HHC_SERVER_NAME.key
+      ln -s /etc/letsencrypt/live/$HHC_SERVER_NAME/fullchain.pem /etc/ssl/certs/$HHC_SERVER_NAME.crt
+      ln -s /etc/letsencrypt/live/$HHC_SERVER_NAME/privkey.pem /etc/ssl/private/$HHC_SERVER_NAME.key
     else
       # No cert here, We'll register and get one and store all the gubbins on the letsecnrypt volume (n.b. this needs to be an azuredisk for symlink reasons)
       echo -e "Getting new cert and linking cert/key to /etc/ssl"
@@ -56,9 +56,9 @@ else
       [ -f  /etc/ssl/private/$HHC_SERVER_NAME.key ] && rm /etc/ssl/private/$HHC_SERVER_NAME.key
 
       # Link cert and key to a location that our general apache config will know about
-      if [ -f /etc/letsencrypt/live/base/fullchain.pem ]; then
-        ln -s /etc/letsencrypt/live/base/fullchain.pem /etc/ssl/certs/$HHC_SERVER_NAME.crt
-        ln -s /etc/letsencrypt/live/base/privkey.pem /etc/ssl/private/$HHC_SERVER_NAME.key
+      if [ -f /etc/letsencrypt/live/$HHC_SERVER_NAME/fullchain.pem ]; then
+        ln -s /etc/letsencrypt/live/$HHC_SERVER_NAME/fullchain.pem /etc/ssl/certs/$HHC_SERVER_NAME.crt
+        ln -s /etc/letsencrypt/live/$HHC_SERVER_NAME/privkey.pem /etc/ssl/private/$HHC_SERVER_NAME.key
       else
         echo -e "${red}${bold}Certificate could not be obtained from letsencrypt using certbot!${normal}"
       fi
@@ -74,11 +74,12 @@ else
   # Remove this one as it is no good to us in this context
   rm /etc/cron.d/certbot
   # Add some evaluated variables 
-  sed -i "s/#HHC_SERVER_NAME#/$HHC_SERVER_NAME/" /var/tmp/renew_cert
-  sed -i "s/#ADMIN_EMAIL#/$ADMIN_EMAIL/" /var/tmp/renew_cert
+  sed -i "s/#HHC_SERVER_NAME#/$HHC_SERVER_NAME/g" /var/tmp/renew_cert
+  sed -i "s/#ADMIN_EMAIL#/$ADMIN_EMAIL/g" /var/tmp/renew_cert
   # copy renew_script into cron.monthly (whould be frequent enough)
   mkdir -p /etc/cron.monthly
   mv /var/tmp/renew_cert /etc/cron.monthly/renew_cert
+  service cron start
   printf "%-50s $print_ok\n" "renew_cert script moved to /etc/cron.monthly";
 fi
 

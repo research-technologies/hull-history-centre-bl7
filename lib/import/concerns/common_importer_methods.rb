@@ -15,6 +15,23 @@ module CommonImporterMethods
     errors = errors.flatten.compact
   end
 
+  def check(input_files)
+    errors = []
+    totals = []
+    filenames = parse_input_args(input_files)
+    with_timing do
+      files = Array(filenames)
+      file_count = files.length
+
+      files.each_with_index do |filename, i|
+        print_message "\nChecking file #{i+1} of #{file_count}: #{filename}"
+        totals << check_file_data(filename)
+      end
+    end
+    errors = errors.flatten.compact
+    totals
+  end
+
   def parse_input_args(input_files)
     files = Dir.glob(input_files)
     raise "#{input_files}: File Not Found" if files.empty?
@@ -36,7 +53,7 @@ module CommonImporterMethods
     start_time = Time.now
     yield
     end_time = Time.now
-    print_message "\nImport finished in: #{(end_time - start_time).ceil} seconds."
+    print_message "\nProcessing finished in: #{(end_time - start_time).ceil} seconds."
   end
 
   def print_message(msg)

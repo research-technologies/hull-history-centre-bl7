@@ -13,10 +13,6 @@
       <%= link_to 'Summary', catalog_path(document.id, tab: 'summary'), class: "#{tab_class('summary', @show_tab)} #{menu_item_classes}" %>
     </div>
 
-    <div class="tile-btn-fw-secondary">
-      <%= link_to 'Access', catalog_path(document.id, tab: 'access'), class: "#{tab_class('access', @show_tab)} #{menu_item_classes}", onclick: "setTimeout(init_downloads_list, 300);" %>
-    </div>
-
     <% if contains?(:image,@document.id) %>
     <div class="tile-btn-fw-secondary">
       <%= link_to 'Images', catalog_path(document.id, tab: 'images'), class: "#{tab_class('images', @show_tab)} #{menu_item_classes}" %>
@@ -39,6 +35,11 @@
       <%= link_to 'Video', catalog_path(document.id, tab: 'video'), class: "#{tab_class('video', @show_tab)} #{menu_item_classes}" %>
     </div>
     <% end %>
+
+    <div class="tile-btn-fw-secondary">
+      <%= link_to 'Access', catalog_path(document.id, tab: 'access'), class: "#{tab_class('access', @show_tab)} #{menu_item_classes}", onclick: "setTimeout(init_downloads_list, 300);" %>
+    </div>
+
   </div>
 
   <div id="tab-content" class="col-sm-10">

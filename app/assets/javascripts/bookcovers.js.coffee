@@ -12,7 +12,7 @@ insertBookCoverImage = (data) ->
     $("##{imgId}").attr("src", thumbnail_url)
 
 addBookCovers = (ids) ->
-  url = "http://books.google.com/books?bibkeys=#{ids}&jscmd=viewapi&callback=?"
+  url = "https://books.google.com/books?bibkeys=#{ids}&jscmd=viewapi&callback=?"
   $.getJSON url, {}, insertBookCoverImage
  
 $ -> 

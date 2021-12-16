@@ -9,10 +9,13 @@ module Ead
 
       map_key_to_class = { collections: Ead::Collection,
                            sub_collections:  Ead::SubCollection,
-                           items:                  Ead::Item,
-                           pieces:                 Ead::Piece,
-                           series:                  Ead::Series,
-                           sub_series:          Ead::SubSeries }
+                           items:            Ead::Item,
+                           pieces:           Ead::Piece,
+                           series:           Ead::Series,
+                           sub_series:       Ead::SubSeries,
+                           sub_sub_series:   Ead::SubSubSeries,
+                           sections:         Ead::Section
+                        }
 
       print_message "\nSaving records to solr"
       incoming_ids = []
@@ -35,6 +38,38 @@ module Ead
       errors << filename + ': ' + e.message
     end
     
+    def self.check_file_data(filename)
+      errors = []
+      objects = Ead::Parser.parse(filename)
+
+      map_key_to_class = { collections: Ead::Collection,
+                           sub_collections:  Ead::SubCollection,
+                           items:            Ead::Item,
+                           pieces:           Ead::Piece,
+                           series:           Ead::Series,
+                           sub_series:       Ead::SubSeries,
+                           sub_sub_series:   Ead::SubSubSeries,
+                           sections:         Ead::Section
+                        }
+
+      incoming_ids = []
+      counts = {:filename => File.basename(filename,File.extname(filename)), :collections => 0, :sections => 0, :sub_collections => 0, :series => 0, :sub_series => 0, :sub_sub_series => 0, :items => 0, :pieces => 0, :hyax_objects => 0}
+      map_key_to_class.each do |key, ead_class|
+        Array(objects[key]).each do |attributes|
+          incoming_ids << attributes[:id]
+          counts[key.to_sym] += 1
+          if attributes[:dao].present? && ead_class.clean_access_status(attributes['access']) == 'open'
+            counts[:hyrax_objects] += 1
+          end
+        end
+      end
+      errors
+      counts
+    rescue => e
+      print_message(" ERROR: Check Aborted")
+      errors << filename + ': ' + e.message
+    end
+
     # Delete any orphan solr documents
     # Note: this assumes that the full EAD catalogue is being imported
     #   if a partial catalogue is being imported, all other records will be deleted
@@ -55,7 +90,7 @@ module Ead
     
     def self.existing_ids(id_base)
       @solr.get('select', params: {
-        q: "id:#{id_base}*", 
+        q: "id:#{id_base}", 
         fl: 'id,reference_no_ssi',
         rows: 1000
       })['response']['docs']

@@ -1,4 +1,4 @@
-FROM ruby:2.6
+FROM ruby:2.6-buster
 
 # Setup environment variables for use at build time only
 ARG APP_WORKDIR
@@ -21,6 +21,7 @@ RUN apt-get update -qq \
     apache2 \
     bzip2 \
     certbot \
+    cron \
     git \
     libpq-dev \
     libxml2-dev \
@@ -29,6 +30,7 @@ RUN apt-get update -qq \
     tree \
     unzip \
     vim \
+    yarn \
     xz-utils \
     # https://github.com/docker-library/ruby/issues/226
     && curl -sL https://deb.nodesource.com/setup_10.x | bash - && apt-get install -y nodejs

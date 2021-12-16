@@ -14,6 +14,9 @@ module Ead
         pieces = parse_records(doc, Ead::Piece)
         series = parse_records(doc, Ead::Series)
         sub_series = parse_records(doc, Ead::SubSeries)
+        sub_sub_series = parse_records(doc, Ead::SubSubSeries)
+        sections = parse_records(doc, Ead::Section)
+
         # TODO sub_sub_series (for historical records)
         # TODO section (for historical record)
 
@@ -21,7 +24,7 @@ module Ead
           raise "No records found.  Please check that you have valid XML."
         end
 
-        { collections: collections, sub_collections: sub_collections, items: items, pieces: pieces, series: series, sub_series: sub_series }
+        { collections: collections, sub_collections: sub_collections, items: items, pieces: pieces, series: series, sub_series: sub_series, sub_sub_series: sub_sub_series, sections: sections }
       end
 
       def parse_records(node, record_class)

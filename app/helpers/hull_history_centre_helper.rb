@@ -74,7 +74,7 @@ module HullHistoryCentreHelper
       asset_path "icon-flat-microfilm.png"
     when "Archive Collection"
       asset_path "icon-flat-archive.png"
-    when "Archive Item", "piece", "item", "series", "subcollection", "subseries"
+    when "Archive Item", "piece", "item", "series", "subcollection", "subseries", "subsubseries"
       asset_path "icon-flat-archive-item.png"
     when "Video"
       asset_path "icon-flat-video.png"
