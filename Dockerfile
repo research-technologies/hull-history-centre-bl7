@@ -1,4 +1,4 @@
-FROM ruby:2.6-buster
+FROM ruby:2.7-buster
 
 # Setup environment variables for use at build time only
 ARG APP_WORKDIR
@@ -67,6 +67,8 @@ RUN a2enmod proxy_http
 
 # copy gemfiles to production folder
 COPY Gemfile Gemfile.lock $APP_WORKDIR
+
+RUN gem install bundler:2.2.11
 
 # install gems to system - use flags dependent on RAILS_ENV
 RUN if [ "$RAILS_ENV" = "production" ]; then \
