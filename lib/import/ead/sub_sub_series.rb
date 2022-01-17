@@ -5,7 +5,7 @@ module Ead
       class << self
 
         def root_xpath
-          'c[@otherlevel="SubSubSeries"]'
+          'c[@otherlevel="subsubseries"]'
         end
 
         def sub_collection_xpath
