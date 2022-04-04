@@ -43,6 +43,24 @@ $(document).on ('ready page:load', function (){
 
 });
 
+$(document).on('ready', function (){
+   
+  // The drop down toggle is not kicking in when results are first loaded
+
+/*  $('.dropdown-toggle').on('click', function(){
+
+    var parent = $(this).parent();
+
+    if(parent.hasClass('open')) { 
+      parent.removeClass('open'); 
+    } else {
+      parent.addClass('open');
+    }
+//    $('.dropdown-toggle').off('click');
+  });
+*/
+});
+
 function getScreenWidth() {
   var _width = $(window).width();
   return _width;
@@ -106,7 +124,7 @@ function init_downloads_list(){
 console.log("init downloads list called");
   //Math.ceil($(".hhc_pager li").length/10);
   ///$(".hhc_pager:gt(0)").hide();
-  render_index(num_pages,0);
+  render_index(0);
   $(".hhc_index").on("click", ".hhc_ind", function(){
     if($(this).hasClass("disabled")){return false;}
     $(".hhc_pager").hide();

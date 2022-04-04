@@ -38,6 +38,8 @@ else
   ## Perhaps when letsencrypt start issuing certs for IPs we should modify the above so that --staging is used with certbot when HOSTNAME_IS_IP?
   [[ $ENVIRONMENT == "dev" ]] && staging="--staging"
 
+  mkdir -p /var/www/acme-docroot/.well-known/acme-challenge
+
   # Correct cert on data volume in /data/pki/certs? We should be able to just bring apache up with ssl
   # If not...
   if [ ! -f /etc/ssl/certs/$HHC_SERVER_NAME.crt ]; then
@@ -49,7 +51,6 @@ else
     else
       # No cert here, We'll register and get one and store all the gubbins on the letsecnrypt volume (n.b. this needs to be an azuredisk for symlink reasons)
       echo -e "Getting new cert and linking cert/key to /etc/ssl"
-      mkdir -p /var/www/acme-docroot/.well-known/acme-challenge
       certbot -n certonly --webroot $staging -w /var/www/acme-docroot/ --expand --agree-tos --email $ADMIN_EMAIL --cert-name $HHC_SERVER_NAME -d $HHC_SERVER_NAME
      # In case these are somehow hanging around to wreck the symlinking
       [ -f  /etc/ssl/certs/$HHC_SERVER_NAME.crt ] && rm /etc/ssl/certs/$HHC_SERVER_NAME.crt

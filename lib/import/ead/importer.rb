@@ -1,3 +1,6 @@
+require 'net/http'
+require 'net/https' # for openssl
+
 module Ead
   module Importer
     extend CommonImporterMethods
@@ -22,7 +25,7 @@ module Ead
       map_key_to_class.each do |key, ead_class|
         Array(objects[key]).each do |attributes|
           incoming_ids << attributes[:id]
-          if attributes[:dao].present? && ead_class.clean_access_status(attributes['access']) == 'open'
+          if attributes[:dao].present? && ead_class.clean_access_status(attributes[:access]) == 'open'
             print_message "\nRetrieving information from Hyrax for #{attributes[:dao]}"
             update_hyrax_visiblity_for_item(attributes[:dao]) 
             attributes = update_solr_docs_from_hyrax(attributes[:dao], attributes)
@@ -39,6 +42,7 @@ module Ead
     end
     
     def self.check_file_data(filename)
+
       errors = []
       objects = Ead::Parser.parse(filename)
 
@@ -53,21 +57,52 @@ module Ead
                         }
 
       incoming_ids = []
-      counts = {:filename => File.basename(filename,File.extname(filename)), :collections => 0, :sections => 0, :sub_collections => 0, :series => 0, :sub_series => 0, :sub_sub_series => 0, :items => 0, :pieces => 0, :hyax_objects => 0}
+      counts = {:filename => File.basename(filename,File.extname(filename)), 
+                :collections => 0, 
+                :bl_collections => 0, 
+                :sections => 0, 
+                :bl_sections => 0, 
+                :sub_collections => 0, 
+                :bl_sub_collections => 0, 
+                :series => 0, 
+                :bl_series => 0, 
+                :sub_series => 0, 
+                :bl_sub_series => 0, 
+                :sub_sub_series => 0, 
+                :bl_sub_sub_series => 0, 
+                :items => 0, 
+                :bl_items => 0, 
+                :pieces => 0, 
+                :bl_pieces => 0, 
+                :hyrax_objects => 0}
       map_key_to_class.each do |key, ead_class|
         Array(objects[key]).each do |attributes|
           incoming_ids << attributes[:id]
           counts[key.to_sym] += 1
-          if attributes[:dao].present? && ead_class.clean_access_status(attributes['access']) == 'open'
+          counts["bl_#{key}".to_sym] += 1 if check_blacklight(attributes[:id]).to_i == 200
+          if attributes[:dao].present? && ead_class.clean_access_status(attributes[:access]) == 'open'
             counts[:hyrax_objects] += 1
           end
         end
       end
       errors
       counts
-    rescue => e
-      print_message(" ERROR: Check Aborted")
-      errors << filename + ': ' + e.message
+#    rescue => e
+#      print_message(" ERROR: Check Aborted")
+#      errors << filename + ': ' + e.message
+    end
+
+    def self.check_blacklight(id)
+
+      uri = URI("https://hullhistorycentre-prod.hull.cdl.cosector.com")
+      path = "/catalogue/#{id.gsub(/[\s\/]/,'-')}.json"
+      response=nil
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true                            # if using SSL
+      http.verify_mode = OpenSSL::SSL::VERIFY_NONE   # for example, when using self-signed certs
+      response = http.head(path)
+      response.code
+
     end
 
     # Delete any orphan solr documents

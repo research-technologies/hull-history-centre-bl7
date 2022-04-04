@@ -34,7 +34,6 @@
               <%= render_range_input("dates_isim", :begin) %> - <%= render_range_input("dates_isim", :end) %>      
           </div>
         </div>
-
         <div id="advanced_search_facets" class="limit_input">
           <h3>Limit your search</h3>
           <% if blacklight_config.try(:advanced_search).try {|h| h[:form_facet_partial] } %>
@@ -44,7 +43,6 @@
           <% end %>
         </div>
       </div>
-
   <h3>Sort</h3>
 
   <div class="col-md-3">

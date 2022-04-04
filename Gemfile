@@ -71,9 +71,10 @@ gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'jquery-rails'
 
 gem 'blacklight_range_limit'
-gem 'blacklight_advanced_search'
+gem 'blacklight_advanced_search', '~> 6.0'
 gem 'blacklight_google_analytics', git: 'https://github.com/research-technologies/blacklight_google_analytics', branch: 'master'
 
 gem 'pg' # used by docker
 
+gem 'naturally'
 #gem 'pul_uv_rails', '2.0.1'

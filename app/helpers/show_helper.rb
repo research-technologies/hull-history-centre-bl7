@@ -28,11 +28,15 @@ module ShowHelper
       if document[id_key].present?
         link_to breadcrumb_title, catalog_path(document[id_key])
       else
-        breadcrumb_title
+        breadcrumb_title.present? ? breadcrumb_title : nil
       end
     end
 
-    current_crumb = document['title_tesim'].first
+    if document['title_tesim']&.first.present?
+      current_crumb = document['title_tesim'].first
+    else
+       current_crumb = document['reference_no_ssi']
+    end
     crumbs = crumbs + [current_crumb]
     crumbs = crumbs.compact.join(' &gt; ').html_safe
   end

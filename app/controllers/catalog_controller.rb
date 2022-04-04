@@ -110,35 +110,32 @@ class CatalogController < ApplicationController
     # since we aren't specifying it otherwise. 
     
     config.add_search_field 'all_fields', :label => 'All Fields'
-    
     config.add_search_field('title') do |field|
-      field.solr_local_parameters = {
-        :qf => '$title_qf',
-        :pf => '$title_pf'
+      field.solr_parameters = {
+        :qf => '${title_qf}',
+        :pf => '${title_pf}'
       }
     end
-
     config.add_search_field('author') do |field|
-      field.solr_local_parameters = {
-        :qf => '$author_qf',
-        :pf => '$author_pf'
+      field.solr_parameters = {
+        :qf => '${author_qf}',
+        :pf => '${author_pf}'
       }
     end
 
     config.add_search_field('subject') do |field|
-      field.solr_local_parameters = {
-        :qf => '$subject_qf',
-        :pf => '$subject_pf'
+      field.solr_parameters = {
+        :qf => '${subject_qf}',
+        :pf => '${subject_pf}'
       }
     end
-
    config.add_search_field('reference_no') do |field|
-      field.solr_local_parameters = {
-        :qf => '$reference_no_qf',
-        :pf => '$reference_no_pf'
+      field.include_in_simple_select = false
+      field.solr_parameters = {
+        :qf => '${reference_no_qf}',
+        :pf => '${reference_no_pf}'
       }
     end
-
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
