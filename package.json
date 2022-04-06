@@ -3,7 +3,7 @@
   "private": true,
   "repository": "git@github.com:samvera/hyrax.git",
   "scripts": {
-    "install-uv": "yarn install --modules-folder ./public/uv"
+    "install-uv": "npm install --modules-folder ./public/uv"
   },
   "dependencies": {
     "universalviewer": "^3.1.4"
