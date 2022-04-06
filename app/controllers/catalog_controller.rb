@@ -62,16 +62,16 @@ class CatalogController < ApplicationController
     #
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
-    config.add_facet_field 'format_ssi', label: 'Format', collapse: false, limit: 15
-    config.add_facet_field 'dates_isim', label: 'Date', :range => true
-    config.add_facet_field 'repository_ssi', label: 'Repository', limit: 5
-    config.add_facet_field 'subject_ssim', label: 'Subject', limit: 15
-    config.add_facet_field 'author_ssim', label: 'Author', limit: 15
-    config.add_facet_field 'collection_id_ssi', label: 'Collection', show: false, helper_method: :title_by_id
-    config.add_facet_field 'sub_collection_id_ssi', label: 'Subcollection', show: false, helper_method: :title_by_id
-    config.add_facet_field 'series_id_ssi', label: 'Series', show: false, helper_method: :title_by_id
-    config.add_facet_field 'sub_series_id_ssi', label: 'Subseries', show: false, helper_method: :title_by_id
-    config.add_facet_field 'online_ssi', label: 'Availability', collapse: true
+    config.add_facet_field 'format_ssi', label: 'Format', collapse: false, limit: 15, solr_params: { 'facet.mincount' => 1 }
+    config.add_facet_field 'dates_isim', label: 'Date', :range => true, solr_params: { 'facet.mincount' => 1 }
+    config.add_facet_field 'repository_ssi', label: 'Repository', limit: 5, solr_params: { 'facet.mincount' => 1 }
+    config.add_facet_field 'subject_ssim', label: 'Subject', limit: 15, solr_params: { 'facet.mincount' => 1 }
+    config.add_facet_field 'author_ssim', label: 'Author', limit: 15, solr_params: { 'facet.mincount' => 1 }
+    config.add_facet_field 'collection_id_ssi', label: 'Collection', show: false, helper_method: :title_by_id, solr_params: { 'facet.mincount' => 1 }
+    config.add_facet_field 'sub_collection_id_ssi', label: 'Subcollection', show: false, helper_method: :title_by_id, solr_params: { 'facet.mincount' => 1 }
+    config.add_facet_field 'series_id_ssi', label: 'Series', show: false, helper_method: :title_by_id, solr_params: { 'facet.mincount' => 1 }
+    config.add_facet_field 'sub_series_id_ssi', label: 'Subseries', show: false, helper_method: :title_by_id, solr_params: { 'facet.mincount' => 1 }
+    config.add_facet_field 'online_ssi', label: 'Availability', collapse: true, solr_params: { 'facet.mincount' => 1 }
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
@@ -130,12 +130,12 @@ class CatalogController < ApplicationController
       }
     end
    config.add_search_field('reference_no') do |field|
-      field.include_in_simple_select = false
       field.solr_parameters = {
         :qf => '${reference_no_qf}',
         :pf => '${reference_no_pf}'
       }
     end
+
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
