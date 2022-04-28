@@ -90,7 +90,6 @@ class CatalogController < ApplicationController
     # config.add_show_field 'reference_no_ssi', label: 'Reference No'
     # NB: These are set directly in the views for each type of record
 
-
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
     #
