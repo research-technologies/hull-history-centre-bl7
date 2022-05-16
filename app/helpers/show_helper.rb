@@ -17,7 +17,8 @@ module ShowHelper
             ['series_title_ss', 'series_id_ssi'],
             ['sub_series_title_ss', 'sub_series_id_ssi'],
             ['sub_sub_series_title_ss', 'sub_sub_series_id_ssi'],
-            ['item_title_ss', 'item_id_ssi']
+            ['item_title_ss', 'item_id_ssi'],
+            ['piece_title_ss', 'piece_id_ssi']
     ]
 
     # If we have the ID for a solr document, the breadcrumb
@@ -42,7 +43,8 @@ module ShowHelper
   end
 
   def sub_items_link(document)
-    keys = {  "subsubseries" => "sub_sub_series_id_ssi",
+    keys = {  "item" => "item_id_ssi",
+              "subsubseries" => "sub_sub_series_id_ssi",
               "subseries" => "sub_series_id_ssi",
               "series" => "series_id_ssi",
               "subcollection" => "sub_collection_id_ssi" 

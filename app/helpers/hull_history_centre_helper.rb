@@ -119,7 +119,7 @@ module HullHistoryCentreHelper
   end
   
   def manifest(dao_id)
-    "http://#{ENV['SERVER_NAME']}/concern/digital_archival_objects/#{dao_id}/manifest"
+    "https://#{ENV['SERVER_NAME']}/concern/digital_archival_objects/#{dao_id}/manifest"
   end
   
   def contains?(type,document_id)
