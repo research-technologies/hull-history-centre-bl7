@@ -19,6 +19,23 @@ module SolrTools
     get_solr_docs_with_query.each{|doc| update_doc doc['id'], doc }
   end
 
+  def self.update(q=nil, rows=nil, update=nil, with=nil)
+    @q=q
+    @rows=rows
+    @solr = Blacklight.default_index.connection
+    result=get_solr_docs_with_query
+    total = result.count
+    i=0
+    result.each do |doc| 
+      if doc[update].blank?
+        update_query = "{'id':'#{doc['id']}', #{update} :{'set':'#{doc[with]}'}}"
+        op=`curl -s 'http://localhost:8983/solr/blacklight-core/update?commit=true' -H 'Content-type:application/json' -d "[#{update_query}]"`
+        i+=1
+        print "#{i}/#{total}\r"
+      end
+    end
+  end
+
   def self.get_solr_docs_with_query
     query_params = {q: @q, rows: @rows}
     query_params['fq'] = @fq if @fq.present?

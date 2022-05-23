@@ -7,4 +7,10 @@ namespace :solr_tools do
 
   end
 
+  task :update, [:q, :rows, :update, :with] do |t, args|
+    require 'import/solr_tools'
+    SolrTools.update(args.q, args.rows, args.update, args.with)
+
+  end
+
 end
