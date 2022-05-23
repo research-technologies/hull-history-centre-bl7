@@ -84,6 +84,7 @@ class CatalogController < ApplicationController
     config.add_index_field 'dates_ssim', label: 'Date'
     config.add_index_field 'extent_ssm', label: 'Extent'
     config.add_index_field 'reference_no_ssi', label: 'Reference No'
+    config.add_index_field 'reference_no_search', label: 'Reference No'
 
     # solr fields to be displayed in the show (single result) view
     # The ordering of the field names is the order of the display
@@ -109,29 +110,58 @@ class CatalogController < ApplicationController
     # since we aren't specifying it otherwise. 
     
     config.add_search_field 'all_fields', :label => 'All Fields'
+
+#    config.add_search_field('title') do |field|
+#      field.solr_parameters = {
+#        :qf => '${title_qf}',
+#        :pf => '${title_pf}'
+#      }
+#    end
+#    config.add_search_field('author') do |field|
+#      field.solr_parameters = {
+#        :qf => '${author_qf}',
+#        :pf => '${author_pf}'
+#      }
+#    end
+#
+#    config.add_search_field('subject') do |field|
+#      field.solr_parameters = {
+#        :qf => '${subject_qf}',
+#        :pf => '${subject_pf}'
+#      }
+#    end
+#   config.add_search_field('reference_no') do |field|
+#      field.solr_parameters = {
+#        :qf => '${reference_no_qf}',
+#        :pf => '${reference_no_pf}'
+#      }
+#    end
+
     config.add_search_field('title') do |field|
-      field.solr_parameters = {
-        :qf => '${title_qf}',
-        :pf => '${title_pf}'
+      field.solr_local_parameters = {
+        :qf => '$title_qf',
+        :pf => '$title_pf'
       }
     end
+
     config.add_search_field('author') do |field|
-      field.solr_parameters = {
-        :qf => '${author_qf}',
-        :pf => '${author_pf}'
+      field.solr_local_parameters = {
+        :qf => '$author_qf',
+        :pf => '$author_pf'
       }
     end
 
     config.add_search_field('subject') do |field|
-      field.solr_parameters = {
-        :qf => '${subject_qf}',
-        :pf => '${subject_pf}'
+      field.solr_local_parameters = {
+        :qf => '$subject_qf',
+        :pf => '$subject_pf'
       }
     end
+
    config.add_search_field('reference_no') do |field|
-      field.solr_parameters = {
-        :qf => '${reference_no_qf}',
-        :pf => '${reference_no_pf}'
+      field.solr_local_parameters = {
+        :qf => '$reference_no_qf',
+        :pf => '$reference_no_pf'
       }
     end
 
