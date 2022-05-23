@@ -40,6 +40,7 @@ module Ead
             'id' => format_id(attributes[:id]),
             'reference_no_ssi' => attributes[:id],
             'reference_no_ssort' => sortable_id(attributes[:id]),
+            'reference_no_search' => attributes[:id],
             'type_ssi' => 'generic_record',
             'title_tesim' => attributes[:title],
             'title_ssi' => Array(attributes[:title]).first,

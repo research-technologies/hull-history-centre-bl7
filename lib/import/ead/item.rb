@@ -50,6 +50,7 @@ module Ead
       def to_solr(attributes)
         super.merge({
           'reference_no_ssi' => attributes[:id],
+          'reference_no_search' => attributes[:id],
           'type_ssi' => 'item',
           'format_ssi' => 'Archive Item',
           'display_title_ss' => display_title(attributes[:title]),
