@@ -5,5 +5,5 @@ when 'development'
 when 'test'
   nil
 else
-  'UA-XXXXX-X'
+  'UA-34485476-5'
 end      
