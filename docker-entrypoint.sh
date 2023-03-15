@@ -108,8 +108,12 @@ bundle exec rake db:migrate
 echo "--------- Starting Blacklight in $RAILS_ENV mode ---------"
 rm -f /tmp/"$APP_KEY".pid
 
-RAILS_START=`bundle exec rails server -p $RAILS_PORT -b '0.0.0.0' --pid /tmp/${APP_KEY}.pid`
-if [ "$?" -ne "0" ]; then
-  echo "### There was an issue starting rails/puma. We have kept this container alive for you to go and see what's up ###"
-  tail -f /dev/null
-fi
+bundle exec rails server -p $RAILS_PORT -b '0.0.0.0' --pid /tmp/${APP_KEY}.pid
+
+# restart pod on webserver failure (i.e. don't leave the container hanging off tail -f /dev/null
+
+#RAILS_START=`bundle exec rails server -p $RAILS_PORT -b '0.0.0.0' --pid /tmp/${APP_KEY}.pid`
+#if [ "$?" -ne "0" ]; then
+#  echo "### There was an issue starting rails/puma. We have kept this container alive for you to go and see what's up ###"
+#  tail -f /dev/null
+#fi
