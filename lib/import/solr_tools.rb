@@ -29,7 +29,7 @@ module SolrTools
     result.each do |doc| 
       if doc[update].blank?
         update_query = "{'id':'#{doc['id']}', #{update} :{'set':'#{doc[with]}'}}"
-        op=`curl -s 'http://localhost:8983/solr/blacklight-core/update?commit=true' -H 'Content-type:application/json' -d "[#{update_query}]"`
+        op=`curl -s 'http://solr:8983/solr/blacklight-core/update?commit=true' -H 'Content-type:application/json' -d "[#{update_query}]"`
         i+=1
         print "#{i}/#{total}\r"
       end
