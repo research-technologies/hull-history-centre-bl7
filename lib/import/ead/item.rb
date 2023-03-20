@@ -6,7 +6,7 @@ module Ead
     class << self
 
       def root_xpath
-        'c[@level = "item"]'
+        "c[#{xpath_insensitive_equals('otherlevel','item')} or #{xpath_insensitive_equals('level','item')}]"
       end
 
       def section_xpath

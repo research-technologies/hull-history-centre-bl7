@@ -5,7 +5,7 @@ module Ead
       class << self
 
         def root_xpath
-          'c[@otherlevel="SubSubSeries"]'
+          "c[#{xpath_insensitive_equals('otherlevel','subsubseries')} or #{xpath_insensitive_equals('level','subsubseries')}]"
         end
 
         def sub_collection_xpath

@@ -66,6 +66,11 @@ module Ead
           "#{Array(title).first}"
         end
 
+        # using xpath 1.0 no lower-case available so lets use this curious technique
+        def xpath_insensitive_equals(field,string)
+          "translate(@#{field}, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = '#{string}'"
+        end
+
       end
 
   end

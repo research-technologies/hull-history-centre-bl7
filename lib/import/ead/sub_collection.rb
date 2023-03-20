@@ -5,7 +5,7 @@ module Ead
     class << self 
 
       def root_xpath
-        'c[@otherlevel="SubCollection"]'
+        "c[#{xpath_insensitive_equals('otherlevel','subcollection')} or #{xpath_insensitive_equals('level','subcollection')}]"
       end
 
       def to_solr(attributes)

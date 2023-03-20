@@ -5,7 +5,7 @@ module Ead
     class << self
 
       def root_xpath
-        'c[@otherlevel = "Piece"]'
+        "c[#{xpath_insensitive_equals('otherlevel','piece')} or #{xpath_insensitive_equals('level','piece')}]"
       end
 
       # The xpath to the parent Item that the Piece belongs to
