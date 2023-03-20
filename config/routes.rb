@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   end
   concern :searchable, Blacklight::Routes::Searchable.new
 
-  resource :catalogue, only: [:index], as: 'catalog', path: '/catalogue', controller: 'catalog' do
+  resource :catalogue, only: [:index], as: 'catalog', path: '/catalogue', controller: 'catalog', :constraints => { :id => ALLOW_DOTS, :format => false } do
     concerns :searchable
     concerns :range_searchable
   end
