@@ -10,12 +10,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # root :to => "catalogue#index"
 
-  # ERROR undefined method `blacklight_for'
-  # @todo check if this ALLOW DOTS contraint is needed
-  # blacklight_for :catalogue, constraints: { id: ALLOW_DOTS }
+  resources :catalog, controller: 'catalog', path: '/catalogue', :constraints => { :id => ALLOW_DOTS, :format => false }
 
-  resources :catalog, controller: 'catalog', path: '/catalogue'
-  
   # Add LB healthcheck page
   get 'healthcheck/rails-status' => 'pages#rails_status'
 
